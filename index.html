@@ -1,1 +1,968 @@
 
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>EARENDEL — A Literary World</title>
+
+<meta name="description" content="EARENDEL — A world of poetry, stories, novels and emotions.">
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+:root{
+--bg:#08070d;
+--card:#11101a;
+--purple:#a855f7;
+--violet:#7c3aed;
+--white:#f8f5ff;
+--muted:#aaa2b8;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+background:var(--bg);
+color:var(--white);
+font-family:'Noto Serif Bengali',serif;
+overflow-x:hidden;
+}
+
+a{
+text-decoration:none;
+color:inherit;
+}
+
+button,input{
+font:inherit;
+}
+
+/* BACKGROUND */
+
+.background{
+position:fixed;
+inset:0;
+z-index:-2;
+background:
+radial-gradient(ellipse at 20% 20%,#28123e 0%,transparent 45%),
+radial-gradient(ellipse at 80% 80%,#17102d 0%,transparent 45%),
+#08070d;
+}
+
+.background::after{
+content:"";
+position:absolute;
+inset:0;
+background-image:
+radial-gradient(#ffffff66 1px,transparent 1px),
+radial-gradient(#a855f766 1px,transparent 1px);
+background-size:80px 80px,130px 130px;
+animation:stars 30s linear infinite;
+}
+
+@keyframes stars{
+from{background-position:0 0,0 0;}
+to{background-position:300px 500px,-200px 300px;}
+}
+
+/* NAVBAR */
+
+nav{
+position:sticky;
+top:0;
+z-index:100;
+background:#08070dd9;
+backdrop-filter:blur(18px);
+border-bottom:1px solid #ffffff12;
+}
+
+.nav-container{
+max-width:1200px;
+margin:auto;
+padding:20px 6%;
+display:flex;
+align-items:center;
+justify-content:space-between;
+}
+
+.logo{
+font-family:'Cormorant Garamond',serif;
+font-size:32px;
+font-weight:700;
+letter-spacing:5px;
+color:#fff;
+}
+
+.logo span{
+color:var(--purple);
+}
+
+.nav-links{
+display:flex;
+gap:24px;
+align-items:center;
+}
+
+.nav-links a{
+font-size:13px;
+color:#c7bfd4;
+transition:.3s;
+}
+
+.nav-links a:hover{
+color:#c084fc;
+}
+
+.menu-btn{
+display:none;
+background:none;
+border:0;
+color:white;
+font-size:25px;
+cursor:pointer;
+}
+
+/* HERO */
+
+.hero{
+min-height:85vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:80px 20px;
+}
+
+.hero-content{
+max-width:850px;
+animation:fadeUp 1.2s ease;
+}
+
+.eyebrow{
+color:#c084fc;
+font-size:12px;
+letter-spacing:5px;
+text-transform:uppercase;
+margin-bottom:28px;
+}
+
+.hero h1{
+font-family:'Cormorant Garamond','Noto Serif Bengali',serif;
+font-size:clamp(48px,8vw,100px);
+font-weight:500;
+line-height:1.2;
+letter-spacing:2px;
+}
+
+.hero h1 span{
+background:linear-gradient(120deg,#fff,#c084fc,#8b5cf6);
+-webkit-background-clip:text;
+background-clip:text;
+color:transparent;
+}
+
+.hero-description{
+max-width:600px;
+margin:25px auto;
+font-size:15px;
+line-height:2.2;
+color:var(--muted);
+}
+
+.hero-buttons{
+display:flex;
+justify-content:center;
+gap:15px;
+flex-wrap:wrap;
+margin-top:35px;
+}
+
+.btn{
+display:inline-block;
+padding:14px 28px;
+border-radius:40px;
+font-size:13px;
+transition:.3s;
+}
+
+.btn-primary{
+background:linear-gradient(120deg,#9333ea,#6d28d9);
+color:white;
+box-shadow:0 0 25px #9333ea30;
+}
+
+.btn-primary:hover{
+transform:translateY(-4px);
+box-shadow:0 0 35px #9333ea70;
+}
+
+.btn-outline{
+border:1px solid #ffffff30;
+color:#e9e1f5;
+}
+
+.btn-outline:hover{
+border-color:var(--purple);
+background:#a855f715;
+}
+
+/* SECTION */
+
+section{
+padding:90px 6%;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+}
+
+.section-heading{
+text-align:center;
+margin-bottom:50px;
+}
+
+.section-heading .small{
+font-size:11px;
+letter-spacing:4px;
+color:var(--purple);
+margin-bottom:12px;
+}
+
+.section-heading h2{
+font-family:'Cormorant Garamond','Noto Serif Bengali',serif;
+font-size:clamp(30px,5vw,48px);
+font-weight:500;
+}
+
+.section-heading p{
+color:var(--muted);
+font-size:13px;
+margin-top:15px;
+}
+
+/* SEARCH */
+
+.search-box{
+max-width:650px;
+margin:0 auto 60px;
+position:relative;
+}
+
+.search-box input{
+width:100%;
+padding:18px 24px;
+background:#ffffff08;
+border:1px solid #ffffff18;
+border-radius:50px;
+color:white;
+outline:none;
+font-size:13px;
+transition:.3s;
+}
+
+.search-box input:focus{
+border-color:#a855f7;
+box-shadow:0 0 25px #a855f720;
+}
+
+.search-box input::placeholder{
+color:#837b91;
+}
+
+/* COLLECTION */
+
+.collection-grid{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px;
+}
+
+.collection-card{
+position:relative;
+min-height:230px;
+padding:28px;
+background:linear-gradient(145deg,#171321,#0d0b13);
+border:1px solid #ffffff12;
+border-radius:18px;
+overflow:hidden;
+transition:.4s;
+}
+
+.collection-card::before{
+content:"";
+position:absolute;
+width:160px;
+height:160px;
+border-radius:50%;
+background:#9333ea20;
+filter:blur(40px);
+right:-60px;
+top:-60px;
+}
+
+.collection-card:hover{
+transform:translateY(-8px);
+border-color:#a855f750;
+box-shadow:0 15px 40px #00000040;
+}
+
+.card-number{
+font-family:'Cormorant Garamond',serif;
+font-size:13px;
+color:#a855f7;
+}
+
+.card-icon{
+font-size:32px;
+margin:25px 0 15px;
+}
+
+.collection-card h3{
+font-family:'Cormorant Garamond','Noto Serif Bengali',serif;
+font-size:25px;
+font-weight:500;
+}
+
+.collection-card p{
+font-size:12px;
+color:var(--muted);
+margin-top:12px;
+line-height:1.9;
+}
+
+.card-arrow{
+position:absolute;
+right:25px;
+bottom:25px;
+color:#c084fc;
+font-size:20px;
+}
+
+/* FEATURED */
+
+.featured{
+background:linear-gradient(180deg,transparent,#120d1d80,transparent);
+}
+
+.featured-card{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:50px;
+align-items:center;
+padding:45px;
+background:#ffffff05;
+border:1px solid #ffffff12;
+border-radius:25px;
+}
+
+.featured-label{
+color:#c084fc;
+font-size:11px;
+letter-spacing:3px;
+}
+
+.featured-card h3{
+font-family:'Cormorant Garamond','Noto Serif Bengali',serif;
+font-size:38px;
+font-weight:500;
+margin:25px 0;
+}
+
+.featured-card p{
+color:var(--muted);
+font-size:14px;
+line-height:2.3;
+}
+
+.featured-visual{
+min-height:300px;
+border-radius:18px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:
+radial-gradient(circle at center,#4c1d9560,transparent 60%),
+linear-gradient(145deg,#1d1230,#0a0910);
+border:1px solid #ffffff10;
+}
+
+.featured-visual span{
+font-size:100px;
+filter:drop-shadow(0 0 35px #a855f750);
+}
+
+/* QUOTE */
+
+.quote-section{
+text-align:center;
+}
+
+.quote{
+max-width:800px;
+margin:auto;
+font-family:'Cormorant Garamond','Noto Serif Bengali',serif;
+font-size:clamp(24px,4vw,42px);
+line-height:1.8;
+color:#e8dff5;
+}
+
+.quote-mark{
+font-size:70px;
+color:#a855f7;
+line-height:1;
+}
+
+.quote-author{
+margin-top:30px;
+color:#a89bb9;
+font-size:12px;
+letter-spacing:2px;
+}
+
+/* ABOUT */
+
+.about-box{
+max-width:850px;
+margin:auto;
+text-align:center;
+padding:50px 35px;
+border:1px solid #ffffff12;
+border-radius:25px;
+background:#ffffff04;
+}
+
+.about-box h2{
+font-family:'Cormorant Garamond','Noto Serif Bengali',serif;
+font-size:40px;
+font-weight:500;
+margin-bottom:25px;
+}
+
+.about-box p{
+color:var(--muted);
+font-size:14px;
+line-height:2.4;
+}
+
+/* FOOTER */
+
+footer{
+border-top:1px solid #ffffff12;
+padding:35px 6%;
+}
+
+.footer-content{
+max-width:1200px;
+margin:auto;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.footer-logo{
+font-family:'Cormorant Garamond',serif;
+font-size:25px;
+letter-spacing:4px;
+}
+
+.footer-text{
+color:#81798e;
+font-size:11px;
+}
+
+/* ANIMATION */
+
+@keyframes fadeUp{
+from{
+opacity:0;
+transform:translateY(35px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+.collection-grid{
+grid-template-columns:repeat(2,1fr);
+}
+
+.featured-card{
+grid-template-columns:1fr;
+}
+
+.nav-links{
+gap:15px;
+}
+
+}
+
+@media(max-width:650px){
+
+.nav-container{
+padding:16px 5%;
+}
+
+.logo{
+font-size:25px;
+}
+
+.menu-btn{
+display:block;
+}
+
+.nav-links{
+display:none;
+position:absolute;
+top:100%;
+left:0;
+right:0;
+background:#0c0a12;
+padding:25px;
+flex-direction:column;
+border-bottom:1px solid #ffffff15;
+}
+
+.nav-links.active{
+display:flex;
+}
+
+.nav-links a{
+padding:10px;
+}
+
+.hero{
+min-height:75vh;
+}
+
+section{
+padding:65px 5%;
+}
+
+.collection-grid{
+grid-template-columns:1fr;
+}
+
+.collection-card{
+min-height:200px;
+}
+
+.featured-card{
+padding:25px;
+}
+
+.featured-card h3{
+font-size:30px;
+}
+
+.featured-visual{
+min-height:220px;
+}
+
+.footer-content{
+justify-content:center;
+text-align:center;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<!-- NAVIGATION -->
+
+<nav>
+<div class="nav-container">
+
+<a href="index.html" class="logo">
+EAR<span>EN</span>DEL
+</a>
+
+<button class="menu-btn" id="menuBtn" aria-label="Open menu">
+☰
+</button>
+
+<div class="nav-links" id="navLinks">
+
+<a href="index.html">Home</a>
+<a href="poetry.html">Poetry</a>
+<a href="stories.html">Stories</a>
+<a href="novels.html">Novels</a>
+<a href="quotes.html">Quotes</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+
+</div>
+
+</div>
+</nav>
+
+<!-- HERO -->
+
+<header class="hero">
+
+<div class="hero-content">
+
+<div class="eyebrow">
+A WORLD OF WORDS & EMOTIONS
+</div>
+
+<h1>
+Welcome to<br>
+<span>EARENDEL</span>
+</h1>
+
+<p class="hero-description">
+কিছু শব্দ হৃদয়ে থেকে যায়,
+কিছু অনুভূতি কবিতায় বেঁচে থাকে।
+<br>
+EARENDEL — যেখানে সাহিত্য,
+অনুভূতি ও কল্পনা এক হয়ে যায়।
+</p>
+
+<div class="hero-buttons">
+
+<a href="poetry.html" class="btn btn-primary">
+Explore Poetry ↗
+</a>
+
+<a href="#collections" class="btn btn-outline">
+Discover the Library
+</a>
+
+</div>
+
+</div>
+
+</header>
+
+<!-- COLLECTIONS -->
+
+<section id="collections">
+
+<div class="container">
+
+<div class="section-heading">
+
+<div class="small">
+EXPLORE THE WORLD
+</div>
+
+<h2>সাহিত্যের সংগ্রহ</h2>
+
+<p>
+Discover stories, poetry and emotions.
+</p>
+
+</div>
+
+<div class="search-box">
+
+<input
+type="search"
+id="searchInput"
+placeholder="কবিতা, গল্প অথবা অনুভূতি খুঁজুন..."
+aria-label="Search collections"
+>
+
+</div>
+
+<div class="collection-grid" id="collectionGrid">
+
+<a href="poetry.html" class="collection-card">
+
+<div class="card-number">01 / POETRY</div>
+
+<div class="card-icon">✧</div>
+
+<h3>কবিতা</h3>
+
+<p>
+ভালোবাসা, বিরহ, অনুভূতি
+ও জীবনের গল্প।
+</p>
+
+<span class="card-arrow">↗</span>
+
+</a>
+
+<a href="stories.html" class="collection-card">
+
+<div class="card-number">02 / STORIES</div>
+
+<div class="card-icon">❧</div>
+
+<h3>গল্প</h3>
+
+<p>
+ছোট ছোট গল্পে লুকিয়ে
+থাকা জীবনের অনুভূতি।
+</p>
+
+<span class="card-arrow">↗</span>
+
+</a>
+
+<a href="novels.html" class="collection-card">
+
+<div class="card-number">03 / NOVELS</div>
+
+<div class="card-icon">⌘</div>
+
+<h3>উপন্যাস</h3>
+
+<p>
+দীর্ঘ গল্প, চরিত্র
+ও কল্পনার জগৎ।
+</p>
+
+<span class="card-arrow">↗</span>
+
+</a>
+
+<a href="quotes.html" class="collection-card">
+
+<div class="card-number">04 / QUOTES</div>
+
+<div class="card-icon">❝</div>
+
+<h3>উক্তি</h3>
+
+<p>
+কিছু কথা, যা অল্প শব্দে
+অনেক অনুভূতি বলে।
+</p>
+
+<span class="card-arrow">↗</span>
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FEATURED -->
+
+<section class="featured">
+
+<div class="container">
+
+<div class="section-heading">
+
+<div class="small">
+A MOMENT OF LITERATURE
+</div>
+
+<h2>Featured Collection</h2>
+
+<p>
+একটি অনুভূতি, একটি গল্প, একটি পৃথিবী।
+</p>
+
+</div>
+
+<div class="featured-card">
+
+<div>
+
+<div class="featured-label">
+THE EARENDEL EXPERIENCE
+</div>
+
+<h3>
+শব্দের ভেতর<br>
+একটি নীরব পৃথিবী
+</h3>
+
+<p>
+প্রতিটি কবিতা একটি অনুভূতি।
+প্রতিটি গল্প একটি নতুন পৃথিবী।
+আর প্রতিটি শব্দের ভেতরে
+লুকিয়ে থাকে এক একটি জীবন।
+</p>
+
+<br>
+
+<a href="poetry.html" class="btn btn-primary">
+Start Reading ↗
+</a>
+
+</div>
+
+<div class="featured-visual">
+
+<span>✧</span>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- QUOTE -->
+
+<section class="quote-section">
+
+<div class="container">
+
+<div class="quote-mark">“</div>
+
+<p class="quote">
+কিছু অনুভূতি কখনো
+শব্দে প্রকাশ করা যায় না,
+তবুও তারা কবিতা হয়ে
+হৃদয়ে বেঁচে থাকে।
+</p>
+
+<div class="quote-author">
+A THOUGHT FROM EARENDEL
+</div>
+
+</div>
+
+</section>
+
+<!-- ABOUT -->
+
+<section>
+
+<div class="container">
+
+<div class="about-box">
+
+<div class="section-heading">
+
+<div class="small">
+OUR WORLD
+</div>
+
+<h2>About EARENDEL</h2>
+
+</div>
+
+<p>
+EARENDEL একটি সাহিত্যিক জগৎ,
+যেখানে কবিতা, গল্প, উপন্যাস
+এবং অনুভূতির কথা একসঙ্গে
+সংগ্রহ করা হয়।
+
+আমাদের উদ্দেশ্য হলো
+সাহিত্যকে সুন্দরভাবে উপস্থাপন করা,
+পাঠকদের জন্য একটি শান্ত
+ও সুন্দর reading experience তৈরি করা।
+</p>
+
+<br>
+
+<a href="about.html" class="btn btn-outline">
+Discover Our Story ↗
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="footer-content">
+
+<div class="footer-logo">
+EARENDEL
+</div>
+
+<div class="footer-text">
+A Literary World · Made with Love
+</div>
+
+<div class="footer-text">
+© <span id="year"></span> EARENDEL
+</div>
+
+</div>
+
+</footer>
+
+<script>
+
+/* MOBILE MENU */
+
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
+
+menuBtn.addEventListener("click",function(){
+
+navLinks.classList.toggle("active");
+
+});
+
+/* CLOSE MENU */
+
+document.querySelectorAll(".nav-links a").forEach(function(link){
+
+link.addEventListener("click",function(){
+
+navLinks.classList.remove("active");
+
+});
+
+});
+
+/* SEARCH COLLECTIONS */
+
+const searchInput = document.getElementById("searchInput");
+
+const cards = document.querySelectorAll(".collection-card");
+
+searchInput.addEventListener("input",function(){
+
+const value = searchInput.value.toLowerCase();
+
+cards.forEach(function(card){
+
+const text = card.textContent.toLowerCase();
+
+card.style.display = text.includes(value) ? "" : "none";
+
+});
+
+});
+
+/* CURRENT YEAR */
+
+document.getElementById("year").textContent =
+new Date().getFullYear();
+
+</script>
+
+</body>
+</html>
