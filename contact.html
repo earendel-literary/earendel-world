@@ -4,302 +4,489 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080808">
 <title>Contact — EARENDEL</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --bg:#08070d;
-  --panel:#100e19;
-  --purple:#a78bfa;
-  --text:#f4efff;
-  --muted:#a39bb3;
-  --line:rgba(255,255,255,.1);
+  --bg:#080808;
+  --panel:#11100e;
+  --gold:#c8a45d;
+  --light:#ead5a0;
+  --text:#eee7d9;
+  --muted:#a59d90;
+  --line:rgba(200,164,93,.2);
 }
 *{margin:0;padding:0;box-sizing:border-box}
-body{
-  background:var(--bg);
-  color:var(--text);
-  font-family:'Noto Serif Bengali',serif;
-  min-height:100vh;
-}
-body:before{
-  content:"";
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  background:
-    radial-gradient(circle at 15% 20%,rgba(139,92,246,.13),transparent 30%),
-    radial-gradient(circle at 85% 75%,rgba(91,33,182,.12),transparent 35%);
-  z-index:-1;
-}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Noto Serif Bengali',serif}
 a{text-decoration:none;color:inherit}
-nav{
-  max-width:1200px;
-  margin:auto;
-  padding:27px 7%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+button,input,textarea,select{font:inherit}
+.container{width:min(1120px,90%);margin:auto}
+.eyebrow{font-size:10px;letter-spacing:4px;color:var(--gold)}
+.gold{color:var(--gold)}
+
+/* HEADER */
+header{
+  position:sticky;top:0;z-index:30;
+  background:rgba(8,8,8,.95);
+  backdrop-filter:blur(15px);
   border-bottom:1px solid var(--line);
+}
+.navbar{
+  min-height:80px;display:flex;
+  justify-content:space-between;align-items:center;gap:20px;
 }
 .logo{
   font-family:'Cormorant Garamond',serif;
-  font-size:32px;
-  letter-spacing:5px;
-  color:var(--purple);
+  font-size:34px;letter-spacing:6px;
+  color:var(--light);font-weight:600;
 }
-.navlinks{display:flex;gap:23px;flex-wrap:wrap}
-.navlinks a{
-  color:var(--muted);
-  font-size:13px;
-  transition:.3s;
+.nav-links{display:flex;align-items:center;gap:23px}
+.nav-links a{font-size:11px;color:#c1b9aa;transition:.3s}
+.nav-links a:hover,.nav-links .active{color:var(--gold)}
+.nav-links .contact{
+  border:1px solid var(--gold);padding:10px 16px;color:var(--gold)
 }
-.navlinks a:hover,.navlinks .active{color:var(--purple)}
+.menu{
+  display:none;background:none;color:var(--gold);
+  border:1px solid var(--line);padding:8px 12px;
+  font-size:20px;cursor:pointer;
+}
+
+/* HERO */
 .hero{
-  max-width:1200px;
-  margin:auto;
-  padding:100px 7% 65px;
+  min-height:540px;display:flex;align-items:center;
+  position:relative;overflow:hidden;
+  background:
+    linear-gradient(90deg,rgba(8,8,8,.97),rgba(8,8,8,.65)),
+    url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1800') center/cover;
+  border-bottom:1px solid var(--line);
 }
-.eyebrow{
-  color:var(--purple);
-  letter-spacing:5px;
-  font-size:11px;
-  margin-bottom:25px;
-}
-h1{
+.hero-content{padding:100px 0;position:relative;z-index:2}
+.hero h1{
   font-family:'Cormorant Garamond',serif;
-  font-size:clamp(65px,11vw,125px);
-  font-weight:400;
-  line-height:.9;
-  letter-spacing:-3px;
+  font-size:clamp(75px,11vw,130px);
+  font-weight:400;line-height:.85;
+  margin:30px 0;
 }
-h1 span{color:var(--purple);font-style:italic}
+.hero h1 span{color:var(--gold);font-style:italic}
 .hero p{
-  color:var(--muted);
-  max-width:540px;
-  line-height:2;
-  font-size:14px;
-  margin-top:32px;
+  max-width:570px;font-size:13px;
+  color:#c3b9a9;line-height:2.4;
 }
-.contact-wrap{
-  max-width:1200px;
-  margin:auto;
-  padding:30px 7% 110px;
-  display:grid;
-  grid-template-columns:1fr 1.1fr;
-  gap:65px;
+.hero-bottom{
+  margin-top:35px;display:flex;align-items:center;gap:16px;
 }
-.small-title{
-  color:var(--purple);
-  font-size:11px;
-  letter-spacing:3px;
-  margin-bottom:20px;
-}
-.left h2{
+.hero-line{width:60px;height:1px;background:var(--gold)}
+.hero-bottom span{font-size:9px;letter-spacing:3px;color:var(--light)}
+.hero-number{
+  position:absolute;right:5%;bottom:35px;
   font-family:'Cormorant Garamond',serif;
-  font-size:48px;
-  font-weight:400;
-  margin-bottom:20px;
+  font-size:20px;color:var(--gold);font-style:italic;
 }
-.left>p{
-  color:var(--muted);
-  font-size:13px;
-  line-height:2;
-  margin-bottom:40px;
-}
-.contact-card{
-  border-top:1px solid var(--line);
-  padding:25px 0;
-}
-.contact-card label{
-  display:block;
-  color:var(--muted);
-  font-size:11px;
-  margin-bottom:10px;
-}
-.contact-card a{
+
+/* INTRO */
+.intro{padding:90px 0 60px;text-align:center}
+.intro h2{
   font-family:'Cormorant Garamond',serif;
-  font-size:23px;
-  color:var(--text);
-  transition:.3s;
+  font-size:clamp(42px,6vw,65px);
+  font-weight:400;margin:15px 0;
 }
-.contact-card a:hover{color:var(--purple)}
-.socials{display:flex;gap:22px;flex-wrap:wrap;margin-top:15px}
-.socials a{
-  font-family:'Noto Serif Bengali',serif;
-  font-size:12px;
-  color:var(--muted);
+.intro p{
+  max-width:650px;margin:auto;
+  color:var(--muted);font-size:12px;line-height:2.4;
 }
-.socials a:hover{color:var(--purple)}
-.form-box{
-  background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.015));
+
+/* CONTACT GRID */
+.contact-section{padding:40px 0 110px}
+.contact-grid{
+  display:grid;grid-template-columns:.85fr 1.15fr;
+  gap:28px;align-items:stretch;
+}
+
+/* LEFT INFO */
+.info-panel{
+  padding:38px;
+  background:linear-gradient(145deg,#17140e,#0d0c0a);
   border:1px solid var(--line);
-  padding:42px;
-  border-radius:4px;
 }
-.form-box h2{
+.info-panel h2{
   font-family:'Cormorant Garamond',serif;
-  font-size:42px;
-  font-weight:400;
-  margin-bottom:10px;
+  font-size:48px;font-weight:400;margin:18px 0;
 }
-.form-box>p{
-  color:var(--muted);
-  font-size:12px;
-  line-height:1.9;
-  margin-bottom:30px;
+.info-panel>p{
+  font-size:12px;color:var(--muted);line-height:2.3;
+  margin-bottom:35px;
 }
-.field{margin-bottom:23px}
+.info-item{
+  display:flex;gap:17px;align-items:flex-start;
+  padding:22px 0;border-top:1px solid var(--line);
+}
+.info-icon{
+  width:43px;height:43px;flex-shrink:0;
+  display:grid;place-items:center;
+  border:1px solid var(--line);color:var(--gold);
+  font-size:18px;
+}
+.info-item h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:24px;font-weight:400;color:var(--light);
+}
+.info-item p{font-size:11px;color:var(--muted);line-height:2;margin-top:5px}
+.info-item a{color:var(--gold)}
+.social-title{
+  margin-top:28px;padding-top:22px;
+  border-top:1px solid var(--line);
+  color:var(--gold);font-size:10px;letter-spacing:3px;
+}
+.social-links{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+.social-links a{
+  border:1px solid var(--line);padding:10px 14px;
+  font-size:10px;color:#c4b9a7;transition:.3s;
+}
+.social-links a:hover{background:var(--gold);color:#080808}
+
+/* FORM */
+.form-panel{
+  padding:42px;background:#0e0d0b;
+  border:1px solid var(--line);
+}
+.form-heading{
+  font-family:'Cormorant Garamond',serif;
+  font-size:48px;font-weight:400;margin:15px 0 8px;
+}
+.form-subtitle{
+  color:var(--muted);font-size:11px;line-height:2;margin-bottom:30px;
+}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.field{margin-bottom:20px}
 .field label{
-  display:block;
-  font-size:12px;
-  color:#c7bdd8;
-  margin-bottom:11px;
+  display:block;font-size:10px;letter-spacing:1px;
+  color:var(--light);margin-bottom:10px;
 }
-.field input,.field textarea{
-  width:100%;
-  background:rgba(0,0,0,.2);
-  border:1px solid var(--line);
-  padding:15px;
-  color:white;
-  font-family:inherit;
-  font-size:13px;
-  outline:none;
-  transition:.3s;
+.field input,.field textarea,.field select{
+  width:100%;padding:15px;
+  background:#080808;border:1px solid #30291d;
+  color:var(--text);outline:none;font-size:12px;
+  transition:.3s;border-radius:0;
 }
-.field input:focus,.field textarea:focus{border-color:var(--purple)}
-.field textarea{height:135px;resize:vertical}
-button{
-  width:100%;
-  border:1px solid var(--purple);
-  background:var(--purple);
-  color:#100b1b;
-  padding:16px;
-  font-family:inherit;
-  font-weight:600;
-  cursor:pointer;
-  transition:.3s;
+.field input:focus,.field textarea:focus,.field select:focus{
+  border-color:var(--gold);
+  box-shadow:0 0 15px rgba(200,164,93,.08);
 }
-button:hover{background:transparent;color:var(--purple)}
-#notice{
-  display:none;
-  color:#c4b5fd;
-  font-size:12px;
-  line-height:1.8;
-  margin-top:18px;
+.field textarea{height:150px;resize:vertical;line-height:2}
+.field input::placeholder,.field textarea::placeholder{color:#655e53}
+.field select{color:#a59d90}
+.field select option{background:#111;color:white}
+.submit-btn{
+  width:100%;padding:16px;border:0;
+  background:var(--gold);color:#080808;
+  font-size:11px;letter-spacing:2px;
+  cursor:pointer;transition:.3s;
 }
-footer{
+.submit-btn:hover{
+  background:var(--light);
+  box-shadow:0 8px 25px rgba(200,164,93,.13);
+  transform:translateY(-3px);
+}
+.form-note{
+  font-size:10px;color:#82796b;
+  line-height:2;margin-top:17px;
+}
+
+/* QUOTE */
+.quote-section{
+  padding:90px 0;text-align:center;
   border-top:1px solid var(--line);
-  text-align:center;
-  padding:30px 15px;
-  color:var(--muted);
-  font-size:11px;
-  letter-spacing:1px;
+  border-bottom:1px solid var(--line);
+  background:radial-gradient(ellipse at center,rgba(200,164,93,.1),transparent 70%);
 }
-footer span{color:var(--purple)}
-@media(max-width:750px){
-  nav{align-items:flex-start;gap:20px;flex-direction:column}
-  .navlinks{gap:14px}
-  .hero{padding-top:75px}
-  .contact-wrap{grid-template-columns:1fr;gap:35px}
-  .form-box{padding:25px}
+.quote-mark{
+  font-family:'Cormorant Garamond',serif;
+  font-size:100px;color:var(--gold);line-height:.8;
+}
+.quote-section h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(36px,6vw,68px);
+  font-weight:400;line-height:1.2;margin:20px auto;
+}
+.quote-section p{
+  color:var(--gold);font-size:10px;letter-spacing:3px;
+}
+
+/* FOOTER */
+footer{background:#050505;padding:40px 0 22px}
+.footer-top{
+  display:flex;justify-content:space-between;
+  align-items:center;gap:20px;flex-wrap:wrap;padding-bottom:25px;
+}
+.footer-logo{
+  font-family:'Cormorant Garamond',serif;
+  font-size:30px;letter-spacing:5px;color:var(--gold);
+}
+.footer-links{display:flex;gap:18px;flex-wrap:wrap}
+.footer-links a{font-size:10px;color:var(--muted)}
+.footer-links a:hover{color:var(--gold)}
+.copyright{
+  border-top:1px solid var(--line);padding-top:20px;
+  text-align:center;color:#777064;font-size:10px;
+}
+
+/* ANIMATION */
+.reveal{opacity:0;transform:translateY(30px);transition:1s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.hero h1 span{animation:glow 4s ease-in-out infinite}
+@keyframes glow{
+  0%,100%{text-shadow:0 0 0 transparent}
+  50%{text-shadow:0 0 35px rgba(200,164,93,.3)}
+}
+
+@media(max-width:850px){
+  .nav-links{gap:12px}
+  .nav-links a{font-size:10px}
+  .contact-grid{gap:16px}
+  .info-panel,.form-panel{padding:25px}
+}
+@media(max-width:650px){
+  .navbar{min-height:72px}
+  .logo{font-size:28px}
+  .menu{display:block}
+  .nav-links{
+    display:none;position:absolute;top:72px;left:0;right:0;
+    background:#0b0a08;padding:15px 5%;
+    flex-direction:column;align-items:stretch;gap:0;
+  }
+  .nav-links.show{display:flex}
+  .nav-links a{padding:13px 0;border-bottom:1px solid var(--line)}
+  .nav-links .contact{margin-top:10px;text-align:center}
+  .hero{min-height:470px;background-position:60% center}
+  .hero-content{padding:80px 0}
+  .hero h1{font-size:85px}
+  .intro{padding:70px 0 45px}
+  .contact-section{padding:25px 0 75px}
+  .contact-grid{grid-template-columns:1fr;gap:20px}
+  .info-panel,.form-panel{padding:27px 22px}
+  .info-panel h2,.form-heading{font-size:42px}
+  .form-row{grid-template-columns:1fr;gap:0}
+  .quote-section{padding:75px 0}
+  .footer-top{flex-direction:column;align-items:flex-start}
 }
 </style>
 </head>
 
 <body>
 
-<nav>
-  <a href="index.html" class="logo">EARENDEL</a>
-  <div class="navlinks">
-    <a href="index.html">Home</a>
-    <a href="poetry.html">Poetry</a>
-    <a href="stories.html">Stories</a>
-    <a href="novels.html">Novels</a>
-    <a href="quotes.html">Quotes</a>
-    <a href="about.html">About</a>
-    <a href="contact.html" class="active">Contact</a>
-  </div>
-</nav>
+<header>
+  <div class="container navbar">
+    <a href="index.html" class="logo">EARENDEL</a>
+    <button class="menu" id="menuBtn" aria-label="Open menu">☰</button>
 
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Home</a>
+      <a href="poetry.html">Poetry</a>
+      <a href="stories.html">Stories</a>
+      <a href="novels.html">Novels</a>
+      <a href="quotes.html">Quotes</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="contact active">Contact ↗</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- HERO -->
 <section class="hero">
-  <div class="eyebrow">A LETTER TO EARENDEL</div>
-  <h1>Let's<br><span>Connect.</span></h1>
+  <div class="container hero-content reveal">
+    <div class="eyebrow">LET'S START A CONVERSATION</div>
+    <h1>Get In<br><span>Touch.</span></h1>
+    <p>
+      প্রতিটি সুন্দর সম্পর্কের শুরু হয় একটি কথোপকথন থেকে।
+      তোমার কোনো ভাবনা, প্রশ্ন, পরামর্শ কিংবা অনুভূতি থাকলে
+      আমাদের সঙ্গে ভাগ করে নিতে পারো।
+    </p>
+    <div class="hero-bottom">
+      <div class="hero-line"></div>
+      <span>WE WOULD LOVE TO HEAR FROM YOU</span>
+    </div>
+  </div>
+  <div class="hero-number">A conversation begins here.</div>
+</section>
+
+<!-- INTRO -->
+<section class="intro container reveal">
+  <div class="eyebrow">A LITTLE NOTE FROM US</div>
+  <h2>Words Bring <span class="gold">Us Together.</span></h2>
   <p>
-    কিছু কথা শব্দ হয়ে আসে, কিছু কথা থেকে যায় মনের গভীরে।
-    তোমার কোনো ভাবনা, অনুভূতি কিংবা পরামর্শ থাকলে
-    EARENDEL-এর সঙ্গে ভাগ করে নিতে পারো।
+    EARENDEL শুধু লেখার একটি জায়গা নয়;
+    এটি ভাবনা ভাগ করে নেওয়ারও একটি পরিসর।
+    তোমার মতামত, সহযোগিতার প্রস্তাব কিংবা
+    নতুন কোনো ধারণা আমাদের জানাতে পারো।
   </p>
 </section>
 
-<section class="contact-wrap">
+<!-- CONTACT AREA -->
+<section class="contact-section">
+  <div class="container contact-grid">
 
-  <div class="left">
-    <div class="small-title">GET IN TOUCH</div>
-    <h2>Every connection<br>begins with a word.</h2>
-    <p>
-      সাহিত্য, লেখা কিংবা EARENDEL সম্পর্কে
-      যেকোনো প্রশ্ন বা মতামত জানাতে আমাদের সঙ্গে যোগাযোগ করো।
-      তোমার প্রতিটি বার্তাই আমাদের কাছে মূল্যবান।
-    </p>
+    <!-- CONTACT DETAILS -->
+    <div class="info-panel reveal">
+      <div class="eyebrow">CONTACT INFORMATION</div>
+      <h2>Let's Talk<br><span class="gold">About Words.</span></h2>
+      <p>
+        তোমার কথা আমাদের কাছে গুরুত্বপূর্ণ।
+        যোগাযোগের জন্য নিচের তথ্যগুলো ব্যবহার করতে পারো।
+      </p>
 
-    <div class="contact-card">
-      <label>EMAIL ADDRESS</label>
-      <a href="mailto:your-email@example.com">your-email@example.com</a>
-    </div>
+      <div class="info-item">
+        <div class="info-icon">✉</div>
+        <div>
+          <h3>Email</h3>
+          <p>তোমার যোগাযোগের ইমেইল ঠিকানা এখানে যোগ করো।</p>
+        </div>
+      </div>
 
-    <div class="contact-card">
-      <label>FOLLOW THE JOURNEY</label>
-      <div class="socials">
-        <a href="#" target="_blank">Facebook ↗</a>
-        <a href="#" target="_blank">Instagram ↗</a>
-        <a href="#" target="_blank">YouTube ↗</a>
+      <div class="info-item">
+        <div class="info-icon">◎</div>
+        <div>
+          <h3>Instagram</h3>
+          <p>আমাদের Instagram প্রোফাইলের লিংক এখানে যোগ করো।</p>
+        </div>
+      </div>
+
+      <div class="info-item">
+        <div class="info-icon">⌂</div>
+        <div>
+          <h3>Our Space</h3>
+          <p>EARENDEL — A Literary World Beyond Words.</p>
+        </div>
+      </div>
+
+      <div class="social-title">FOLLOW OUR JOURNEY</div>
+      <div class="social-links">
+        <a href="#" aria-label="Instagram">Instagram ↗</a>
+        <a href="#" aria-label="Facebook">Facebook ↗</a>
+        <a href="#" aria-label="Pinterest">Pinterest ↗</a>
       </div>
     </div>
+
+    <!-- CONTACT FORM -->
+    <div class="form-panel reveal">
+      <div class="eyebrow">SEND US A MESSAGE</div>
+      <h2 class="form-heading">Write To <span class="gold">Us.</span></h2>
+      <p class="form-subtitle">
+        তোমার মনের কথাগুলো লিখে পাঠানোর জন্য নিচের ফর্মটি ব্যবহার করো।
+      </p>
+
+      <form id="contactForm">
+        <div class="form-row">
+          <div class="field">
+            <label for="name">YOUR NAME</label>
+            <input type="text" id="name" placeholder="তোমার নাম" required>
+          </div>
+
+          <div class="field">
+            <label for="email">EMAIL ADDRESS</label>
+            <input type="email" id="email" placeholder="তোমার ইমেইল" required>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="subject">SUBJECT</label>
+          <select id="subject" required>
+            <option value="">একটি বিষয় বেছে নাও</option>
+            <option>General Inquiry</option>
+            <option>Literary Collaboration</option>
+            <option>Writing Submission</option>
+            <option>Feedback & Suggestions</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="message">YOUR MESSAGE</label>
+          <textarea id="message" placeholder="এখানে তোমার কথাগুলো লিখো..." required></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">SEND MESSAGE ↗</button>
+
+        <p class="form-note">
+          * এই ফর্মটি বর্তমানে Demo Mode-এ আছে।
+          অনলাইনে বার্তা পাঠাতে Email বা Form Backend সংযুক্ত করতে হবে।
+        </p>
+      </form>
+    </div>
+
   </div>
-
-  <div class="form-box">
-    <div class="small-title">SEND A MESSAGE</div>
-    <h2>Write to us.</h2>
-    <p>তোমার কথাগুলো লিখে রাখো। আমরা সেগুলো পড়তে চাই।</p>
-
-    <form id="contactForm">
-      <div class="field">
-        <label>Your Name</label>
-        <input type="text" placeholder="তোমার নাম লিখো" required>
-      </div>
-
-      <div class="field">
-        <label>Your Email</label>
-        <input type="email" placeholder="তোমার ইমেইল ঠিকানা" required>
-      </div>
-
-      <div class="field">
-        <label>Your Message</label>
-        <textarea placeholder="তোমার মনের কথাগুলো লিখো..." required></textarea>
-      </div>
-
-      <button type="submit">SEND YOUR MESSAGE ↗</button>
-      <div id="notice">
-        ধন্যবাদ! এটি এখন একটি Demo Form।
-        বার্তাটি এখনো কোথাও পাঠানো হয়নি।
-      </div>
-    </form>
-  </div>
-
 </section>
 
+<!-- QUOTE -->
+<section class="quote-section reveal">
+  <div class="container">
+    <div class="quote-mark">“</div>
+    <h2>Sometimes, all it takes<br>is a <span class="gold">conversation.</span></h2>
+    <p>EVERY WORD MATTERS · EARENDEL</p>
+  </div>
+</section>
+
+</main>
+
 <footer>
-  © 2026 <span>EARENDEL</span> — A World Beyond Words.
+  <div class="container">
+    <div class="footer-top">
+      <a href="index.html" class="footer-logo">EARENDEL</a>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="poetry.html">Poetry</a>
+        <a href="stories.html">Stories</a>
+        <a href="novels.html">Novels</a>
+        <a href="quotes.html">Quotes</a>
+        <a href="about.html">About</a>
+      </div>
+    </div>
+    <div class="copyright">© 2026 EARENDEL — A World Beyond Words.</div>
+  </div>
 </footer>
 
 <script>
+// MOBILE NAVIGATION
+const menuBtn=document.getElementById("menuBtn");
+const navLinks=document.getElementById("navLinks");
+
+menuBtn.addEventListener("click",()=>{
+  navLinks.classList.toggle("show");
+  menuBtn.textContent=navLinks.classList.contains("show")?"✕":"☰";
+});
+
+navLinks.querySelectorAll("a").forEach(link=>{
+  link.addEventListener("click",()=>{
+    navLinks.classList.remove("show");
+    menuBtn.textContent="☰";
+  });
+});
+
+// DEMO FORM
 document.getElementById("contactForm").addEventListener("submit",function(e){
   e.preventDefault();
-  document.getElementById("notice").style.display="block";
+  alert("ধন্যবাদ! তোমার ফর্মটি Demo Mode-এ পরীক্ষা করা হয়েছে। বার্তা পাঠানোর ব্যবস্থা এখনও সংযুক্ত করা হয়নি।");
   this.reset();
+});
+
+// SCROLL REVEAL
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:.1});
+
+document.querySelectorAll(".reveal").forEach(el=>{
+  observer.observe(el);
 });
 </script>
 
