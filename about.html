@@ -1,1 +1,1148 @@
 
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Our Universe — EARENDEL</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #08070c;
+  --white: #f4efff;
+  --muted: #aaa2b8;
+  --purple: #b99aff;
+  --line: rgba(190,158,255,.19);
+  --serif: "Cormorant Garamond", serif;
+  --bangla: "Noto Serif Bengali", serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--white);
+  font-family: var(--bangla);
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+::selection {
+  background: #9b72e9;
+  color: white;
+}
+
+/* BACKGROUND */
+
+.ambient {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 15% 15%, rgba(100,50,160,.16), transparent 38%),
+    radial-gradient(ellipse at 85% 55%, rgba(74,38,130,.12), transparent 40%),
+    #08070c;
+}
+
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: .12;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.3'/%3E%3C/svg%3E");
+}
+
+.container {
+  width: min(1160px, calc(100% - 48px));
+  margin: auto;
+}
+
+/* NAVIGATION */
+
+header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 20;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.nav {
+  width: min(1320px, calc(100% - 48px));
+  min-height: 86px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+}
+
+.logo {
+  font-family: var(--serif);
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 5px;
+  color: var(--purple);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 27px;
+  flex-wrap: wrap;
+}
+
+.nav-links a {
+  font-family: var(--serif);
+  font-size: 16px;
+  color: #b9b1c7;
+  transition: .3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--purple);
+}
+
+.nav-label {
+  font-family: var(--serif);
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: var(--purple);
+}
+
+/* HERO */
+
+.hero {
+  min-height: 760px;
+  padding: 180px 24px 100px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero::before,
+.hero::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.hero::before {
+  width: 600px;
+  height: 600px;
+  background: rgba(114,66,190,.12);
+  filter: blur(100px);
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.hero::after {
+  width: 350px;
+  height: 350px;
+  border: 1px solid rgba(183,147,255,.13);
+  box-shadow:
+    0 0 100px rgba(151,103,240,.09),
+    inset 0 0 100px rgba(151,103,240,.06);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 950px;
+}
+
+.kicker {
+  color: var(--purple);
+  font-family: var(--serif);
+  font-size: 13px;
+  letter-spacing: 7px;
+  text-transform: uppercase;
+  margin-bottom: 35px;
+}
+
+.hero h1 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(75px, 13vw, 155px);
+  line-height: .9;
+  letter-spacing: -4px;
+  color: #f8f3ff;
+}
+
+.hero h1 span {
+  display: block;
+  font-style: italic;
+  color: var(--purple);
+  font-size: .65em;
+  margin-top: 24px;
+  letter-spacing: 1px;
+}
+
+.hero-bangla {
+  font-size: clamp(19px, 3vw, 25px);
+  line-height: 2.2;
+  color: #d3c9e3;
+  margin-top: 45px;
+}
+
+.hero-note {
+  font-family: var(--serif);
+  font-size: 13px;
+  letter-spacing: 4px;
+  color: #827790;
+  margin-top: 35px;
+}
+
+.scroll-cue {
+  position: absolute;
+  bottom: 35px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--serif);
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: #93869f;
+}
+
+/* INTRODUCTION */
+
+.intro {
+  padding: 145px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.section-label {
+  font-family: var(--serif);
+  font-size: 12px;
+  letter-spacing: 5px;
+  color: var(--purple);
+  margin-bottom: 30px;
+}
+
+.intro-layout {
+  display: grid;
+  grid-template-columns: .7fr 1.3fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.intro-number {
+  font-family: var(--serif);
+  font-size: 130px;
+  line-height: .8;
+  color: rgba(183,147,255,.17);
+}
+
+.intro h2 {
+  font-size: clamp(30px, 5vw, 48px);
+  font-weight: 500;
+  line-height: 1.8;
+  margin-bottom: 30px;
+}
+
+.intro h2 span {
+  color: var(--purple);
+}
+
+.intro-text {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 2.5;
+  max-width: 700px;
+}
+
+/* MANIFESTO */
+
+.manifesto {
+  padding: 150px 24px;
+  text-align: center;
+  position: relative;
+}
+
+.manifesto .small {
+  font-family: var(--serif);
+  color: var(--purple);
+  letter-spacing: 6px;
+  font-size: 12px;
+  margin-bottom: 35px;
+}
+
+.manifesto blockquote {
+  max-width: 970px;
+  margin: auto;
+  font-size: clamp(28px, 5vw, 55px);
+  line-height: 2;
+  font-weight: 400;
+}
+
+.manifesto blockquote span {
+  color: var(--purple);
+}
+
+.manifesto .credit {
+  margin-top: 35px;
+  color: #827790;
+  font-family: var(--serif);
+  font-size: 13px;
+  letter-spacing: 4px;
+}
+
+/* PHILOSOPHY */
+
+.philosophy {
+  padding: 110px 0 140px;
+  background: linear-gradient(180deg, transparent, rgba(69,39,105,.09), transparent);
+}
+
+.philosophy-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 30px;
+  margin-bottom: 65px;
+}
+
+.philosophy-heading h2 {
+  font-size: clamp(30px, 5vw, 50px);
+  font-weight: 500;
+  line-height: 1.7;
+}
+
+.philosophy-heading h2 span {
+  color: var(--purple);
+}
+
+.philosophy-heading p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 2;
+  max-width: 300px;
+}
+
+.values-list {
+  border-top: 1px solid var(--line);
+}
+
+.value {
+  display: grid;
+  grid-template-columns: 90px 1fr 1fr;
+  gap: 30px;
+  align-items: center;
+  padding: 35px 0;
+  border-bottom: 1px solid var(--line);
+  transition: .3s;
+}
+
+.value:hover {
+  padding-left: 15px;
+  background: linear-gradient(90deg, rgba(167,139,250,.07), transparent);
+}
+
+.value-no {
+  font-family: var(--serif);
+  font-size: 27px;
+  color: var(--purple);
+}
+
+.value h3 {
+  font-size: 23px;
+  font-weight: 500;
+}
+
+.value p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 2;
+}
+
+/* COLLECTION */
+
+.collection {
+  padding: 120px 0;
+}
+
+.collection-title {
+  text-align: center;
+  margin-bottom: 65px;
+}
+
+.collection-title h2 {
+  font-size: clamp(32px, 5vw, 55px);
+  font-weight: 500;
+  line-height: 1.7;
+}
+
+.collection-title h2 span {
+  color: var(--purple);
+}
+
+.collection-title p {
+  color: var(--muted);
+  margin-top: 15px;
+  font-size: 14px;
+  line-height: 2;
+}
+
+.collection-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.collection-item {
+  padding: 42px 25px;
+  border-right: 1px solid var(--line);
+  transition: .3s;
+}
+
+.collection-item:last-child {
+  border-right: none;
+}
+
+.collection-item:hover {
+  background: rgba(155,112,230,.08);
+}
+
+.collection-item .symbol {
+  font-family: var(--serif);
+  font-size: 43px;
+  color: var(--purple);
+  margin-bottom: 25px;
+}
+
+.collection-item h3 {
+  font-size: 19px;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.collection-item p {
+  font-size: 12px;
+  line-height: 2;
+  color: var(--muted);
+}
+
+.collection-item a {
+  display: inline-block;
+  font-family: var(--serif);
+  font-size: 14px;
+  color: var(--purple);
+  margin-top: 22px;
+}
+
+/* CLOSING */
+
+.closing {
+  padding: 145px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid var(--line);
+}
+
+.closing::before {
+  content: "";
+  position: absolute;
+  width: 450px;
+  height: 450px;
+  background: rgba(110,66,180,.12);
+  filter: blur(100px);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.closing-content {
+  position: relative;
+  z-index: 2;
+}
+
+.closing .overline {
+  font-family: var(--serif);
+  color: var(--purple);
+  letter-spacing: 6px;
+  font-size: 12px;
+  margin-bottom: 30px;
+}
+
+.closing h2 {
+  font-family: var(--serif);
+  font-size: clamp(55px, 10vw, 105px);
+  line-height: 1;
+  font-weight: 500;
+  letter-spacing: 2px;
+}
+
+.closing h2 span {
+  display: block;
+  color: var(--purple);
+  font-style: italic;
+  margin-top: 15px;
+}
+
+.closing p {
+  max-width: 600px;
+  margin: 35px auto;
+  font-size: 15px;
+  line-height: 2.4;
+  color: #b9b0c8;
+}
+
+.closing-link {
+  display: inline-block;
+  border: 1px solid var(--purple);
+  padding: 14px 32px;
+  color: var(--purple);
+  font-family: var(--serif);
+  letter-spacing: 2px;
+  font-size: 14px;
+  transition: .3s;
+}
+
+.closing-link:hover {
+  background: var(--purple);
+  color: #08070c;
+}
+
+/* FOOTER */
+
+footer {
+  padding: 55px 24px 30px;
+  border-top: 1px solid var(--line);
+}
+
+.footer-top {
+  max-width: 1160px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  padding-bottom: 35px;
+}
+
+.footer-logo {
+  font-family: var(--serif);
+  font-size: 35px;
+  letter-spacing: 5px;
+  color: var(--purple);
+}
+
+.footer-tagline {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+.footer-links {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  color: var(--muted);
+  font-family: var(--serif);
+  font-size: 14px;
+}
+
+.footer-links a:hover {
+  color: var(--purple);
+}
+
+.footer-bottom {
+  max-width: 1160px;
+  margin: auto;
+  border-top: 1px solid var(--line);
+  padding-top: 22px;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  flex-wrap: wrap;
+  color: #81778e;
+  font-family: var(--serif);
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+/* REVEAL ANIMATION */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity .8s ease, transform .8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 850px) {
+  .nav {
+    flex-direction: column;
+    justify-content: center;
+    padding: 18px 0;
+  }
+
+  .nav-links {
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .intro-layout {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .intro-number {
+    font-size: 90px;
+  }
+
+  .collection-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .collection-item:nth-child(2) {
+    border-right: none;
+  }
+
+  .collection-item:nth-child(-n+2) {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .value {
+    grid-template-columns: 55px 1fr;
+  }
+
+  .value p {
+    grid-column: 2;
+  }
+
+  .philosophy-heading {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 550px) {
+  .container {
+    width: calc(100% - 36px);
+  }
+
+  .nav {
+    width: calc(100% - 25px);
+  }
+
+  .nav-links {
+    gap: 12px;
+  }
+
+  .nav-links a {
+    font-size: 14px;
+  }
+
+  .nav-label {
+    display: none;
+  }
+
+  .hero {
+    min-height: 680px;
+    padding-top: 180px;
+  }
+
+  .hero h1 {
+    letter-spacing: -2px;
+  }
+
+  .hero::after {
+    width: 290px;
+    height: 290px;
+  }
+
+  .intro {
+    padding: 95px 0;
+  }
+
+  .manifesto {
+    padding: 100px 22px;
+  }
+
+  .philosophy {
+    padding: 85px 0;
+  }
+
+  .value {
+    gap: 15px;
+  }
+
+  .collection {
+    padding: 85px 0;
+  }
+
+  .collection-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .collection-item {
+    border-right: none;
+    border-bottom: 1px solid var(--line);
+    padding: 30px 15px;
+  }
+
+  .collection-item:last-child {
+    border-bottom: none;
+  }
+
+  .closing {
+    padding: 100px 20px;
+  }
+
+  .footer-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="ambient"></div>
+<div class="grain"></div>
+
+<header>
+  <div class="nav">
+
+    <a class="logo" href="index.html">EARENDEL</a>
+
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="poetry.html">Poetry</a>
+      <a href="stories.html">Stories</a>
+      <a href="novels.html">Novels</a>
+      <a href="quotes.html">Quotes</a>
+      <a class="active" href="about.html">About</a>
+    </nav>
+
+    <div class="nav-label">OUR UNIVERSE</div>
+
+  </div>
+</header>
+
+<!-- HERO -->
+
+<section class="hero">
+
+  <div class="hero-content">
+
+    <div class="kicker">A WORLD BEYOND WORDS</div>
+
+    <h1>
+      EARENDEL
+      <span>Beyond the Words.</span>
+    </h1>
+
+    <p class="hero-bangla">
+      কিছু অনুভূতির কোনো নাম হয় না।
+      <br>
+      কিছু গল্পের কোনো শেষ হয় না।
+      <br>
+      আর কিছু শব্দ, চিরকাল থেকে যায়।
+    </p>
+
+    <div class="hero-note">
+      A PLACE FOR THE UNWRITTEN
+    </div>
+
+  </div>
+
+  <div class="scroll-cue">SCROLL TO EXPLORE ↓</div>
+
+</section>
+
+<!-- INTRODUCTION -->
+
+<section class="intro">
+  <div class="container">
+
+    <div class="section-label reveal">
+      01 — THE BEGINNING
+    </div>
+
+    <div class="intro-layout">
+
+      <div class="intro-number reveal">
+        01
+      </div>
+
+      <div class="reveal">
+
+        <h2>
+          EARENDEL শুধু একটি নাম নয়,
+          <span>এটি অনুভূতির একটি ঠিকানা।</span>
+        </h2>
+
+        <div class="intro-text">
+
+          <p>
+            পৃথিবীতে প্রতিদিন অসংখ্য কথা বলা হয়।
+            কিছু কথা বাতাসে মিলিয়ে যায়,
+            কিছু কথা মানুষের মনে থেকে যায়।
+            আর কিছু কথা কখনো বলা হয় না—
+            শুধু অনুভব করা হয়।
+          </p>
+
+          <p>
+            সেই না-বলা কথাগুলোর জন্যই EARENDEL।
+            এমন একটি সাহিত্যিক পরিসর,
+            যেখানে কবিতা, গল্প, উপন্যাস ও
+            ছোট ছোট অনুভূতি নিজেদের মতো করে
+            জায়গা খুঁজে পায়।
+          </p>
+
+          <p>
+            আমরা বিশ্বাস করি, শব্দ শুধু পড়ার জন্য নয়।
+            কখনো শব্দ কাউকে মনে করিয়ে দেয়,
+            কখনো কাউকে সাহস দেয়,
+            কখনো নিজের সঙ্গে নতুন করে পরিচয় করিয়ে দেয়।
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+
+<section class="manifesto reveal">
+
+  <div class="small">OUR PHILOSOPHY</div>
+
+  <blockquote>
+    "সব অনুভূতি প্রকাশ করা যায় না,
+    সব গল্প কাউকে বলা যায় না।
+    তবুও প্রতিটি মানুষের ভেতরে
+    <span>একটি নিজস্ব পৃথিবী</span> থাকে।"
+  </blockquote>
+
+  <div class="credit">
+    — THE SPIRIT OF EARENDEL
+  </div>
+
+</section>
+
+<!-- PHILOSOPHY -->
+
+<section class="philosophy">
+
+  <div class="container">
+
+    <div class="philosophy-heading reveal">
+
+      <div>
+        <div class="section-label">02 — WHAT WE BELIEVE</div>
+
+        <h2>
+          আমাদের কাছে<br>
+          <span>সাহিত্য মানে কী?</span>
+        </h2>
+      </div>
+
+      <p>
+        আমাদের কাছে সাহিত্য কোনো প্রতিযোগিতা নয়।
+        এটি নিজেকে প্রকাশ করার,
+        অন্যকে বোঝার এবং অনুভূতির সঙ্গে
+        সংযুক্ত থাকার একটি পথ।
+      </p>
+
+    </div>
+
+    <div class="values-list">
+
+      <div class="value reveal">
+
+        <div class="value-no">01</div>
+
+        <h3>অনুভূতির স্বাধীনতা</h3>
+
+        <p>
+          প্রতিটি মানুষের অনুভূতি আলাদা।
+          এখানে প্রতিটি অনুভূতির নিজস্ব
+          একটি জায়গা আছে।
+        </p>
+
+      </div>
+
+      <div class="value reveal">
+
+        <div class="value-no">02</div>
+
+        <h3>শব্দের সৌন্দর্য</h3>
+
+        <p>
+          সাধারণ কিছু শব্দও অসাধারণ হয়ে ওঠে,
+          যখন তার ভেতরে সত্যিকারের অনুভূতি
+          জড়িয়ে থাকে।
+        </p>
+
+      </div>
+
+      <div class="value reveal">
+
+        <div class="value-no">03</div>
+
+        <h3>গল্পের গভীরতা</h3>
+
+        <p>
+          একটি গল্প শুধু তার শুরু ও শেষ নয়।
+          গল্পের আসল সৌন্দর্য থাকে
+          তার ভেতরের যাত্রায়।
+        </p>
+
+      </div>
+
+      <div class="value reveal">
+
+        <div class="value-no">04</div>
+
+        <h3>নিজের মতো থাকা</h3>
+
+        <p>
+          প্রত্যেকের নিজস্ব কণ্ঠস্বর আছে।
+          আমরা সেই স্বতন্ত্রতা ও সৃজনশীলতাকে
+          মূল্য দিতে চাই।
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- COLLECTION -->
+
+<section class="collection">
+
+  <div class="container">
+
+    <div class="collection-title reveal">
+
+      <div class="section-label">03 — EXPLORE OUR WORLD</div>
+
+      <h2>
+        আমাদের ছোট্ট <span>সাহিত্যিক জগৎ</span>
+      </h2>
+
+      <p>
+        প্রতিটি বিভাগে রয়েছে অনুভূতির
+        ভিন্ন একটি দরজা।
+      </p>
+
+    </div>
+
+    <div class="collection-grid">
+
+      <div class="collection-item reveal">
+
+        <div class="symbol">01.</div>
+
+        <h3>Poetry</h3>
+
+        <p>
+          না-বলা অনুভূতি,
+          ছন্দ আর শব্দের ভেতর
+          হারিয়ে যাওয়ার একটি জায়গা।
+        </p>
+
+        <a href="poetry.html">EXPLORE POETRY ↗</a>
+
+      </div>
+
+      <div class="collection-item reveal">
+
+        <div class="symbol">02.</div>
+
+        <h3>Stories</h3>
+
+        <p>
+          ছোট ছোট গল্পের ভেতর
+          জীবনের বড় বড়
+          সত্য খুঁজে পাওয়ার জায়গা।
+        </p>
+
+        <a href="stories.html">EXPLORE STORIES ↗</a>
+
+      </div>
+
+      <div class="collection-item reveal">
+
+        <div class="symbol">03.</div>
+
+        <h3>Novels</h3>
+
+        <p>
+          দীর্ঘ যাত্রা, জীবন্ত চরিত্র
+          আর শেষ না হওয়া
+          কিছু অনুভূতির গল্প।
+        </p>
+
+        <a href="novels.html">EXPLORE NOVELS ↗</a>
+
+      </div>
+
+      <div class="collection-item reveal">
+
+        <div class="symbol">04.</div>
+
+        <h3>Quotes</h3>
+
+        <p>
+          অল্প কিছু শব্দ,
+          অথচ তার ভেতরে
+          লুকিয়ে থাকা অনেক কথা।
+        </p>
+
+        <a href="quotes.html">EXPLORE QUOTES ↗</a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- CLOSING -->
+
+<section class="closing">
+
+  <div class="closing-content reveal">
+
+    <div class="overline">04 — A NOTE TO YOU</div>
+
+    <h2>
+      Stay a little.
+      <span>Feel a little more.</span>
+    </h2>
+
+    <p>
+      হয়তো কোনো একটি কবিতায় তুমি
+      নিজের গল্প খুঁজে পাবে।
+      হয়তো কোনো একটি বাক্য তোমাকে
+      অতীতের কারও কথা মনে করিয়ে দেবে।
+      অথবা হয়তো এখানে এসে
+      তুমি কিছুক্ষণ নিজের মতো থাকতে পারবে।
+    </p>
+
+    <a class="closing-link" href="index.html">
+      ENTER EARENDEL →
+    </a>
+
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+  <div class="footer-top">
+
+    <div>
+      <div class="footer-logo">EARENDEL</div>
+      <div class="footer-tagline">
+        A universe written in feelings.
+      </div>
+    </div>
+
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="poetry.html">Poetry</a>
+      <a href="stories.html">Stories</a>
+      <a href="novels.html">Novels</a>
+      <a href="quotes.html">Quotes</a>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <span>© 2026 EARENDEL. ALL RIGHTS RESERVED.</span>
+    <span>MADE WITH WORDS & FEELINGS.</span>
+  </div>
+
+</footer>
+
+<script>
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  },
+  {
+    threshold: 0.12
+  }
+);
+
+document.querySelectorAll(".reveal").forEach(element => {
+  observer.observe(element);
+});
+</script>
+
+</body>
+</html>
