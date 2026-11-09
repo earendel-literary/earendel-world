@@ -1,1 +1,307 @@
 
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — EARENDEL</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#08070d;
+  --panel:#100e19;
+  --purple:#a78bfa;
+  --text:#f4efff;
+  --muted:#a39bb3;
+  --line:rgba(255,255,255,.1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Noto Serif Bengali',serif;
+  min-height:100vh;
+}
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 15% 20%,rgba(139,92,246,.13),transparent 30%),
+    radial-gradient(circle at 85% 75%,rgba(91,33,182,.12),transparent 35%);
+  z-index:-1;
+}
+a{text-decoration:none;color:inherit}
+nav{
+  max-width:1200px;
+  margin:auto;
+  padding:27px 7%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-bottom:1px solid var(--line);
+}
+.logo{
+  font-family:'Cormorant Garamond',serif;
+  font-size:32px;
+  letter-spacing:5px;
+  color:var(--purple);
+}
+.navlinks{display:flex;gap:23px;flex-wrap:wrap}
+.navlinks a{
+  color:var(--muted);
+  font-size:13px;
+  transition:.3s;
+}
+.navlinks a:hover,.navlinks .active{color:var(--purple)}
+.hero{
+  max-width:1200px;
+  margin:auto;
+  padding:100px 7% 65px;
+}
+.eyebrow{
+  color:var(--purple);
+  letter-spacing:5px;
+  font-size:11px;
+  margin-bottom:25px;
+}
+h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(65px,11vw,125px);
+  font-weight:400;
+  line-height:.9;
+  letter-spacing:-3px;
+}
+h1 span{color:var(--purple);font-style:italic}
+.hero p{
+  color:var(--muted);
+  max-width:540px;
+  line-height:2;
+  font-size:14px;
+  margin-top:32px;
+}
+.contact-wrap{
+  max-width:1200px;
+  margin:auto;
+  padding:30px 7% 110px;
+  display:grid;
+  grid-template-columns:1fr 1.1fr;
+  gap:65px;
+}
+.small-title{
+  color:var(--purple);
+  font-size:11px;
+  letter-spacing:3px;
+  margin-bottom:20px;
+}
+.left h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:48px;
+  font-weight:400;
+  margin-bottom:20px;
+}
+.left>p{
+  color:var(--muted);
+  font-size:13px;
+  line-height:2;
+  margin-bottom:40px;
+}
+.contact-card{
+  border-top:1px solid var(--line);
+  padding:25px 0;
+}
+.contact-card label{
+  display:block;
+  color:var(--muted);
+  font-size:11px;
+  margin-bottom:10px;
+}
+.contact-card a{
+  font-family:'Cormorant Garamond',serif;
+  font-size:23px;
+  color:var(--text);
+  transition:.3s;
+}
+.contact-card a:hover{color:var(--purple)}
+.socials{display:flex;gap:22px;flex-wrap:wrap;margin-top:15px}
+.socials a{
+  font-family:'Noto Serif Bengali',serif;
+  font-size:12px;
+  color:var(--muted);
+}
+.socials a:hover{color:var(--purple)}
+.form-box{
+  background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.015));
+  border:1px solid var(--line);
+  padding:42px;
+  border-radius:4px;
+}
+.form-box h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:42px;
+  font-weight:400;
+  margin-bottom:10px;
+}
+.form-box>p{
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.9;
+  margin-bottom:30px;
+}
+.field{margin-bottom:23px}
+.field label{
+  display:block;
+  font-size:12px;
+  color:#c7bdd8;
+  margin-bottom:11px;
+}
+.field input,.field textarea{
+  width:100%;
+  background:rgba(0,0,0,.2);
+  border:1px solid var(--line);
+  padding:15px;
+  color:white;
+  font-family:inherit;
+  font-size:13px;
+  outline:none;
+  transition:.3s;
+}
+.field input:focus,.field textarea:focus{border-color:var(--purple)}
+.field textarea{height:135px;resize:vertical}
+button{
+  width:100%;
+  border:1px solid var(--purple);
+  background:var(--purple);
+  color:#100b1b;
+  padding:16px;
+  font-family:inherit;
+  font-weight:600;
+  cursor:pointer;
+  transition:.3s;
+}
+button:hover{background:transparent;color:var(--purple)}
+#notice{
+  display:none;
+  color:#c4b5fd;
+  font-size:12px;
+  line-height:1.8;
+  margin-top:18px;
+}
+footer{
+  border-top:1px solid var(--line);
+  text-align:center;
+  padding:30px 15px;
+  color:var(--muted);
+  font-size:11px;
+  letter-spacing:1px;
+}
+footer span{color:var(--purple)}
+@media(max-width:750px){
+  nav{align-items:flex-start;gap:20px;flex-direction:column}
+  .navlinks{gap:14px}
+  .hero{padding-top:75px}
+  .contact-wrap{grid-template-columns:1fr;gap:35px}
+  .form-box{padding:25px}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <a href="index.html" class="logo">EARENDEL</a>
+  <div class="navlinks">
+    <a href="index.html">Home</a>
+    <a href="poetry.html">Poetry</a>
+    <a href="stories.html">Stories</a>
+    <a href="novels.html">Novels</a>
+    <a href="quotes.html">Quotes</a>
+    <a href="about.html">About</a>
+    <a href="contact.html" class="active">Contact</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="eyebrow">A LETTER TO EARENDEL</div>
+  <h1>Let's<br><span>Connect.</span></h1>
+  <p>
+    কিছু কথা শব্দ হয়ে আসে, কিছু কথা থেকে যায় মনের গভীরে।
+    তোমার কোনো ভাবনা, অনুভূতি কিংবা পরামর্শ থাকলে
+    EARENDEL-এর সঙ্গে ভাগ করে নিতে পারো।
+  </p>
+</section>
+
+<section class="contact-wrap">
+
+  <div class="left">
+    <div class="small-title">GET IN TOUCH</div>
+    <h2>Every connection<br>begins with a word.</h2>
+    <p>
+      সাহিত্য, লেখা কিংবা EARENDEL সম্পর্কে
+      যেকোনো প্রশ্ন বা মতামত জানাতে আমাদের সঙ্গে যোগাযোগ করো।
+      তোমার প্রতিটি বার্তাই আমাদের কাছে মূল্যবান।
+    </p>
+
+    <div class="contact-card">
+      <label>EMAIL ADDRESS</label>
+      <a href="mailto:your-email@example.com">your-email@example.com</a>
+    </div>
+
+    <div class="contact-card">
+      <label>FOLLOW THE JOURNEY</label>
+      <div class="socials">
+        <a href="#" target="_blank">Facebook ↗</a>
+        <a href="#" target="_blank">Instagram ↗</a>
+        <a href="#" target="_blank">YouTube ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-box">
+    <div class="small-title">SEND A MESSAGE</div>
+    <h2>Write to us.</h2>
+    <p>তোমার কথাগুলো লিখে রাখো। আমরা সেগুলো পড়তে চাই।</p>
+
+    <form id="contactForm">
+      <div class="field">
+        <label>Your Name</label>
+        <input type="text" placeholder="তোমার নাম লিখো" required>
+      </div>
+
+      <div class="field">
+        <label>Your Email</label>
+        <input type="email" placeholder="তোমার ইমেইল ঠিকানা" required>
+      </div>
+
+      <div class="field">
+        <label>Your Message</label>
+        <textarea placeholder="তোমার মনের কথাগুলো লিখো..." required></textarea>
+      </div>
+
+      <button type="submit">SEND YOUR MESSAGE ↗</button>
+      <div id="notice">
+        ধন্যবাদ! এটি এখন একটি Demo Form।
+        বার্তাটি এখনো কোথাও পাঠানো হয়নি।
+      </div>
+    </form>
+  </div>
+
+</section>
+
+<footer>
+  © 2026 <span>EARENDEL</span> — A World Beyond Words.
+</footer>
+
+<script>
+document.getElementById("contactForm").addEventListener("submit",function(e){
+  e.preventDefault();
+  document.getElementById("notice").style.display="block";
+  this.reset();
+});
+</script>
+
+</body>
+</html>
