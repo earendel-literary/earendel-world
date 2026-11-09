@@ -1,1 +1,652 @@
 
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Quotes | EARENDEL</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #08070d;
+  --card: #12101b;
+  --purple: #a78bfa;
+  --purple-dark: #6d28d9;
+  --text: #f4efff;
+  --muted: #a7a0b7;
+  --border: rgba(167,139,250,.18);
+}
+
+body {
+  background:
+    radial-gradient(ellipse at top, #211334 0%, #08070d 48%);
+  color: var(--text);
+  font-family: 'Noto Serif Bengali', serif;
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+header {
+  border-bottom: 1px solid var(--border);
+  background: rgba(8,7,13,.85);
+  backdrop-filter: blur(15px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.nav {
+  max-width: 1150px;
+  margin: auto;
+  padding: 18px 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: var(--purple);
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  font-size: 13px;
+}
+
+nav a {
+  color: var(--muted);
+  transition: .3s;
+}
+
+nav a:hover,
+nav a.active {
+  color: var(--purple);
+}
+
+.hero {
+  max-width: 900px;
+  margin: auto;
+  padding: 85px 22px 55px;
+  text-align: center;
+}
+
+.eyebrow {
+  color: var(--purple);
+  letter-spacing: 3px;
+  font-size: 12px;
+  margin-bottom: 18px;
+}
+
+.hero h1 {
+  font-size: clamp(38px, 7vw, 68px);
+  line-height: 1.5;
+  margin-bottom: 18px;
+}
+
+.hero h1 span {
+  color: var(--purple);
+}
+
+.hero p {
+  max-width: 650px;
+  margin: auto;
+  color: var(--muted);
+  line-height: 2;
+  font-size: 15px;
+}
+
+.search-wrap {
+  max-width: 620px;
+  margin: 35px auto 0;
+}
+
+.search {
+  width: 100%;
+  padding: 16px 20px;
+  border-radius: 14px;
+  background: #15111f;
+  border: 1px solid var(--border);
+  color: white;
+  font-family: inherit;
+  outline: none;
+  font-size: 14px;
+}
+
+.search:focus {
+  border-color: var(--purple);
+}
+
+main {
+  max-width: 1150px;
+  margin: auto;
+  padding: 20px 22px 80px;
+}
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin: 25px 0;
+}
+
+.section-head h2 {
+  font-size: 25px;
+}
+
+.section-head p {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.filter {
+  border: 1px solid var(--border);
+  background: #14111d;
+  color: var(--muted);
+  padding: 10px 17px;
+  border-radius: 30px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: .25s;
+}
+
+.filter:hover,
+.filter.active {
+  background: var(--purple-dark);
+  color: white;
+  border-color: var(--purple-dark);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.quote-card {
+  position: relative;
+  background: linear-gradient(145deg, #171321, #0e0c14);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 30px;
+  min-height: 270px;
+  display: flex;
+  flex-direction: column;
+  transition: .3s;
+  overflow: hidden;
+}
+
+.quote-card::before {
+  content: "“";
+  position: absolute;
+  top: -15px;
+  right: 18px;
+  font-family: Georgia, serif;
+  font-size: 110px;
+  color: rgba(167,139,250,.07);
+  pointer-events: none;
+}
+
+.quote-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(167,139,250,.5);
+  box-shadow: 0 15px 45px rgba(109,40,217,.12);
+}
+
+.quote-category {
+  color: var(--purple);
+  font-size: 11px;
+  letter-spacing: 1px;
+  margin-bottom: 22px;
+}
+
+.quote-text {
+  font-size: 19px;
+  line-height: 2.1;
+  color: #eee7fa;
+  margin-bottom: 25px;
+  white-space: pre-line;
+}
+
+.quote-bottom {
+  margin-top: auto;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.quote-bottom small {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.copy-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--purple);
+  padding: 8px 13px;
+  border-radius: 25px;
+  font-family: inherit;
+  font-size: 11px;
+  cursor: pointer;
+  transition: .25s;
+}
+
+.copy-btn:hover {
+  background: var(--purple);
+  color: #08070d;
+}
+
+.empty {
+  display: none;
+  text-align: center;
+  color: var(--muted);
+  padding: 50px 10px;
+  line-height: 2;
+}
+
+footer {
+  border-top: 1px solid var(--border);
+  text-align: center;
+  padding: 30px 20px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 2;
+}
+
+footer span {
+  color: var(--purple);
+}
+
+@media (max-width: 850px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .nav {
+    flex-direction: column;
+  }
+
+  nav {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 560px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding-top: 60px;
+  }
+
+  .section-head {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="nav">
+
+    <a class="logo" href="index.html">EARENDEL</a>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="poetry.html">Poetry</a>
+      <a href="stories.html">Stories</a>
+      <a href="novels.html">Novels</a>
+      <a class="active" href="quotes.html">Quotes</a>
+      <a href="about.html">About</a>
+    </nav>
+
+  </div>
+</header>
+
+<section class="hero">
+
+  <div class="eyebrow">WORDS THAT STAY</div>
+
+  <h1>কিছু কথা <span>থেকে যায়</span></h1>
+
+  <p>
+    কিছু কথা খুব ছোট হয়, অথচ তার অনুভূতি অনেক বড়।
+    কিছু শব্দ আমাদের নিজের গল্পের মতো মনে হয়।
+    EARENDEL-এর উক্তি সংগ্রহে খুঁজে নাও
+    তোমার মনের সঙ্গে মিলে যাওয়া কথাগুলো।
+  </p>
+
+  <div class="search-wrap">
+    <input
+      class="search"
+      id="search"
+      type="search"
+      placeholder="উক্তি বা অনুভূতি খুঁজুন..."
+    >
+  </div>
+
+</section>
+
+<main>
+
+  <div class="section-head">
+    <h2>উক্তি সংগ্রহ</h2>
+    <p id="count">৯টি উক্তি</p>
+  </div>
+
+  <div class="filters">
+
+    <button class="filter active" data-category="all">
+      সব উক্তি
+    </button>
+
+    <button class="filter" data-category="love">
+      প্রেম
+    </button>
+
+    <button class="filter" data-category="sad">
+      বিরহ
+    </button>
+
+    <button class="filter" data-category="life">
+      জীবন
+    </button>
+
+    <button class="filter" data-category="hope">
+      আশা
+    </button>
+
+  </div>
+
+  <div class="grid" id="quoteGrid">
+
+    <article class="quote-card" data-category="love">
+
+      <div class="quote-category">প্রেম · অনুভূতি</div>
+
+      <p class="quote-text">কিছু মানুষ জীবনে আসে,
+আর আমাদের সাধারণ দিনগুলোকে
+অসাধারণ করে দিয়ে যায়।</p>
+
+      <div class="quote-bottom">
+        <small>প্রেম</small>
+        <button class="copy-btn">কপি ↗</button>
+      </div>
+
+    </article>
+
+    <article class="quote-card" data-category="sad">
+
+      <div class="quote-category">বিরহ · স্মৃতি</div>
+
+      <p class="quote-text">তুমি চলে যাওয়ার পর
+শহরটা একই আছে,
+শুধু আমার ফেরার
+ঠিকানাটা বদলে গেছে।</p>
+
+      <div class="quote-bottom">
+        <small>বিরহ</small>
+        <button class="copy-btn">কপি ↗</button>
+      </div>
+
+    </article>
+
+    <article class="quote-card" data-category="life">
+
+      <div class="quote-category">জীবন · উপলব্ধি</div>
+
+      <p class="quote-text">সব প্রশ্নের উত্তর পাওয়া জরুরি নয়।
+কিছু প্রশ্নের সঙ্গে
+শান্তিতে বাঁচতে শেখাটাও
+এক ধরনের উত্তর।</p>
+
+      <div class="quote-bottom">
+        <small>জীবন</small>
+        <button class="copy-btn">কপি ↗</button>
+      </div>
+
+    </article>
+
+    <article class="quote-card" data-category="hope">
+
+      <div class="quote-category">আশা · নতুন শুরু</div>
+
+      <p class="quote-text">একটা খারাপ দিন
+তোমার পুরো জীবনের গল্প নয়।
+আগামীকাল আবার
+নতুন করে শুরু করা যায়।</p>
+
+      <div class="quote-bottom">
+        <small>আশা</small>
+        <button class="copy-btn">কপি ↗</button>
+      </div>
+
+    </article>
+
+    <article class="quote-card" data-category="love">
+
+      <div class="quote-category">প্রেম · সম্পর্ক</div>
+
+      <p class="quote-text">ভালোবাসা মানে শুধু
+কাউকে কাছে পাওয়া নয়।
+তার না-বলা কথাগুলোও
+মন দিয়ে বুঝতে শেখা।</p>
+
+      <div class="quote-bottom">
+        <small>প্রেম</small>
+        <button class="copy-btn">কপি ↗</button>
+      </div>
+
+    </article>
+
+    <article class="quote-card" data-category="sad">
+
+      <div class="quote-category">বিরহ · অপেক্ষা</div>
+
+      <p class="quote-text">কিছু অপেক্ষার শেষ হয় না,
+তবুও একদিন
+অপেক্ষা করতে করতে
+মানুষ নিজের জীবনকে
+আবার ভালোবাসতে শেখে।</p>
+
+      <div class="quote-bottom">
+        <small>বিরহ</small>
+        <button class="copy-btn">কপি ↗</button>
+      </div>
+
+    </article>
+
+    <article class="quote-card" data-category="life">
+
+      <div class="quote-category">জীবন · আত্মঅন্বেষণ</div>
+
+      <p class="quote-text">নিজেকে হারিয়ে
+সবাইকে খুশি রাখার চেয়ে,
+নিজেকে বুঝে
+কয়েকজনের পাশে থাকা
+অনেক বেশি সুন্দর।</p>
+
+      <div class="quote-bottom">
+        <small>জীবন</small>
+        <button class="copy-btn">কপি ↗</button>
+      </div>
+
+    </article>
+
+    <article class="quote-card" data-category="hope">
+
+      <div class="quote-category">আশা · সাহস</div>
+
+      <p class="quote-text">ধীরে এগিয়ে যাওয়া
+থেমে যাওয়া নয়।
+তোমার নিজের গতিতেও
+একদিন পথ শেষ হবে।</p>
+
+      <div class="quote-bottom">
+        <small>আশা</small>
+        <button class="copy-btn">কপি ↗</button>
+      </div>
+
+    </article>
+
+    <article class="quote-card" data-category="love">
+
+      <div class="quote-category">প্রেম · স্মৃতি</div>
+
+      <p class="quote-text">কিছু নাম
+শুধু মুখে উচ্চারণ হয় না,
+নীরবতার মধ্যেও
+বারবার ফিরে আসে।</p>
+
+      <div class="quote-bottom">
+        <small>প্রেম</small>
+        <button class="copy-btn">কপি ↗</button>
+      </div>
+
+    </article>
+
+  </div>
+
+  <div class="empty" id="empty">
+    কোনো উক্তি খুঁজে পাওয়া যায়নি।<br>
+    অন্য শব্দ দিয়ে চেষ্টা করো।
+  </div>
+
+</main>
+
+<footer>
+  <div>© 2026 <span>EARENDEL</span></div>
+  <div>শব্দের ভেতরে, অনুভূতির বাইরে।</div>
+</footer>
+
+<script>
+const cards = document.querySelectorAll(".quote-card");
+const filters = document.querySelectorAll(".filter");
+const search = document.getElementById("search");
+const count = document.getElementById("count");
+const empty = document.getElementById("empty");
+
+let currentCategory = "all";
+
+function updateQuotes() {
+
+  const query = search.value.trim().toLowerCase();
+
+  let visible = 0;
+
+  cards.forEach(card => {
+
+    const category = card.dataset.category;
+    const text = card.innerText.toLowerCase();
+
+    const categoryMatch =
+      currentCategory === "all" ||
+      category === currentCategory;
+
+    const searchMatch = text.includes(query);
+
+    const show = categoryMatch && searchMatch;
+
+    card.style.display = show ? "flex" : "none";
+
+    if (show) visible++;
+
+  });
+
+  count.textContent = visible + "টি উক্তি";
+
+  empty.style.display = visible ? "none" : "block";
+
+}
+
+filters.forEach(button => {
+
+  button.addEventListener("click", () => {
+
+    filters.forEach(item => {
+      item.classList.remove("active");
+    });
+
+    button.classList.add("active");
+
+    currentCategory = button.dataset.category;
+
+    updateQuotes();
+
+  });
+
+});
+
+search.addEventListener("input", updateQuotes);
+
+document.querySelectorAll(".copy-btn").forEach(button => {
+
+  button.addEventListener("click", async () => {
+
+    const card = button.closest(".quote-card");
+    const quote = card.querySelector(".quote-text").innerText;
+
+    try {
+
+      await navigator.clipboard.writeText(quote);
+
+      button.textContent = "কপি হয়েছে ✓";
+
+      setTimeout(() => {
+        button.textContent = "কপি ↗";
+      }, 1500);
+
+    } catch (error) {
+
+      button.textContent = "কপি করা যায়নি";
+
+      setTimeout(() => {
+        button.textContent = "কপি ↗";
+      }, 1500);
+
+    }
+
+  });
+
+});
+
+updateQuotes();
+</script>
+
+</body>
+</html>
