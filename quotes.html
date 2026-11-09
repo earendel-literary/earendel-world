@@ -4,317 +4,270 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080808">
+<title>Quotes — EARENDEL</title>
 
-<title>Quotes | EARENDEL</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+:root{
+  --bg:#080808;
+  --panel:#11100e;
+  --gold:#c8a45d;
+  --light:#ead5a0;
+  --text:#eee7d9;
+  --muted:#a59d90;
+  --line:rgba(200,164,93,.2);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Noto Serif Bengali',serif}
+a{text-decoration:none;color:inherit}
+button,input{font:inherit}
+.container{width:min(1120px,90%);margin:auto}
+.eyebrow{font-size:10px;letter-spacing:4px;color:var(--gold)}
+.gold{color:var(--gold)}
+
+/* HEADER */
+header{
+  position:sticky;top:0;z-index:20;
+  background:rgba(8,8,8,.95);
+  backdrop-filter:blur(15px);
+  border-bottom:1px solid var(--line);
+}
+.navbar{min-height:80px;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.logo{
+  font-family:'Cormorant Garamond',serif;
+  font-size:34px;letter-spacing:6px;
+  color:var(--light);font-weight:600;
+}
+.nav-links{display:flex;align-items:center;gap:23px}
+.nav-links a{font-size:11px;color:#c1b9aa;transition:.3s}
+.nav-links a:hover,.nav-links .active{color:var(--gold)}
+.nav-links .contact{border:1px solid var(--gold);padding:10px 16px;color:var(--gold)}
+.menu{
+  display:none;background:none;color:var(--gold);
+  border:1px solid var(--line);padding:8px 12px;
+  font-size:20px;cursor:pointer;
 }
 
-:root {
-  --bg: #08070d;
-  --card: #12101b;
-  --purple: #a78bfa;
-  --purple-dark: #6d28d9;
-  --text: #f4efff;
-  --muted: #a7a0b7;
-  --border: rgba(167,139,250,.18);
-}
-
-body {
+/* HERO */
+.hero{
+  min-height:570px;position:relative;overflow:hidden;
+  display:flex;align-items:center;
   background:
-    radial-gradient(ellipse at top, #211334 0%, #08070d 48%);
-  color: var(--text);
-  font-family: 'Noto Serif Bengali', serif;
-  min-height: 100vh;
+    linear-gradient(90deg,rgba(8,8,8,.97),rgba(8,8,8,.72),rgba(8,8,8,.35)),
+    url('https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=1800') center/cover;
+  border-bottom:1px solid var(--line);
+}
+.hero-content{max-width:750px;padding:100px 0}
+.hero h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(75px,12vw,135px);
+  font-weight:400;line-height:.86;margin:28px 0;
+}
+.hero h1 span{color:var(--gold);font-style:italic}
+.hero p{font-size:13px;line-height:2.3;color:#c2b9a9;max-width:540px}
+.hero-btn{
+  display:inline-block;margin-top:30px;
+  padding:14px 22px;background:var(--gold);
+  color:#080808;font-size:10px;letter-spacing:2px;transition:.3s;
+}
+.hero-btn:hover{background:var(--light);transform:translateY(-4px)}
+.hero-quote{
+  position:absolute;right:5%;bottom:35px;
+  max-width:250px;text-align:right;
+  color:var(--light);font-family:'Cormorant Garamond',serif;
+  font-size:20px;font-style:italic;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+/* INTRO */
+.intro{text-align:center;padding:85px 0 65px}
+.intro h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(42px,6vw,68px);font-weight:400;margin:12px 0;
+}
+.intro p{max-width:650px;margin:auto;color:var(--muted);font-size:12px;line-height:2.3}
+
+/* FEATURED QUOTE */
+.featured{padding:20px 0 100px}
+.featured-card{
+  position:relative;text-align:center;overflow:hidden;
+  padding:75px 35px;background:
+    radial-gradient(ellipse at center,rgba(200,164,93,.13),transparent 70%),
+    linear-gradient(135deg,#17130d,#0b0a08);
+  border:1px solid var(--line);
+}
+.featured-card:before,.featured-card:after{
+  content:"";position:absolute;width:90px;height:90px;
+  border-color:var(--gold);opacity:.6;
+}
+.featured-card:before{top:18px;left:18px;border-top:1px solid;border-left:1px solid}
+.featured-card:after{bottom:18px;right:18px;border-bottom:1px solid;border-right:1px solid}
+.big-mark{
+  font-family:'Cormorant Garamond',serif;
+  font-size:100px;color:var(--gold);line-height:.7;
+}
+.featured-card blockquote{
+  max-width:800px;margin:25px auto;
+  font-size:clamp(22px,4vw,35px);line-height:1.9;
+}
+.featured-card cite{
+  display:block;font-style:normal;color:var(--gold);
+  font-size:10px;letter-spacing:3px;margin-top:25px;
+}
+.copy-featured{
+  margin-top:30px;background:none;border:1px solid var(--gold);
+  color:var(--gold);padding:12px 20px;
+  font-size:10px;letter-spacing:2px;cursor:pointer;transition:.3s;
+}
+.copy-featured:hover{background:var(--gold);color:#080808}
+
+/* CATEGORY STRIP */
+.categories{padding:10px 0 80px}
+.category-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.category-card{
+  position:relative;overflow:hidden;min-height:150px;
+  padding:25px;background:var(--panel);
+  border:1px solid var(--line);
+  display:flex;flex-direction:column;justify-content:space-between;
+  transition:.4s;
+}
+.category-card:hover{border-color:var(--gold);transform:translateY(-6px)}
+.category-number{
+  font-family:'Cormorant Garamond',serif;
+  font-size:32px;color:rgba(200,164,93,.4);
+}
+.category-card h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:27px;font-weight:400;color:var(--light);
+}
+.category-card p{font-size:9px;color:var(--muted);letter-spacing:2px}
+
+/* QUOTE LIBRARY */
+.library{padding:85px 0 110px;background:#0b0a08}
+.section-head{
+  display:flex;justify-content:space-between;
+  align-items:end;gap:20px;flex-wrap:wrap;
+}
+.section-head h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:65px;font-weight:400;margin-top:10px;
+}
+.section-head p{font-size:12px;line-height:2;color:var(--muted)}
+.toolbar{display:flex;gap:14px;flex-wrap:wrap;margin:35px 0}
+.search{
+  flex:1;min-width:220px;padding:14px 17px;
+  background:#11100e;border:1px solid var(--line);
+  color:var(--text);outline:none;font-size:12px;
+}
+.search:focus{border-color:var(--gold)}
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.filter{
+  padding:11px 14px;background:transparent;
+  border:1px solid var(--line);color:var(--muted);
+  font-size:10px;cursor:pointer;transition:.3s;
+}
+.filter:hover,.filter.active{background:var(--gold);color:#080808;border-color:var(--gold)}
+
+/* QUOTE CARDS */
+.quote-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.quote-card{
+  min-height:250px;padding:30px;
+  position:relative;display:flex;flex-direction:column;
+  justify-content:space-between;
+  background:linear-gradient(135deg,#17140e,#100f0d);
+  border:1px solid var(--line);
+  transition:.4s;
+}
+.quote-card:nth-child(3n+2){background:linear-gradient(135deg,#15100f,#100d0d)}
+.quote-card:hover{border-color:var(--gold);transform:translateY(-6px)}
+.quote-mark{
+  font-family:'Cormorant Garamond',serif;
+  font-size:55px;color:var(--gold);line-height:.7;
+}
+.quote-text{font-size:19px;line-height:2;margin:18px 0;color:#e9dfcd}
+.quote-card-footer{
+  display:flex;justify-content:space-between;
+  align-items:center;gap:12px;
+  border-top:1px solid var(--line);padding-top:16px;
+}
+.quote-category{font-size:9px;letter-spacing:2px;color:var(--gold)}
+.copy-btn{
+  background:none;border:0;color:var(--muted);
+  font-size:10px;cursor:pointer;transition:.3s;
+}
+.copy-btn:hover{color:var(--gold)}
+.empty{display:none;text-align:center;padding:60px;color:var(--muted)}
+
+/* FINAL QUOTE */
+.closing{
+  padding:100px 0;text-align:center;
+  background:radial-gradient(ellipse at center,rgba(200,164,93,.1),transparent 70%);
+}
+.closing h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(38px,6vw,65px);
+  font-weight:400;line-height:1.3;
+}
+.closing p{font-size:12px;color:var(--muted);margin-top:18px;line-height:2}
+
+/* FOOTER */
+footer{background:#050505;padding:40px 0 22px}
+.footer-top{
+  display:flex;justify-content:space-between;
+  align-items:center;gap:20px;flex-wrap:wrap;padding-bottom:25px;
+}
+.footer-logo{
+  font-family:'Cormorant Garamond',serif;
+  font-size:30px;letter-spacing:5px;color:var(--gold);
+}
+.footer-links{display:flex;gap:18px;flex-wrap:wrap}
+.footer-links a{font-size:10px;color:var(--muted)}
+.footer-links a:hover{color:var(--gold)}
+.copyright{
+  border-top:1px solid var(--line);padding-top:20px;
+  text-align:center;color:#777064;font-size:10px;
 }
 
-header {
-  border-bottom: 1px solid var(--border);
-  background: rgba(8,7,13,.85);
-  backdrop-filter: blur(15px);
-  position: sticky;
-  top: 0;
-  z-index: 10;
+/* ANIMATION */
+.reveal{opacity:0;transform:translateY(25px);transition:.8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@keyframes shimmer{
+  0%,100%{text-shadow:0 0 0 transparent}
+  50%{text-shadow:0 0 25px rgba(200,164,93,.25)}
 }
+.hero h1 span{animation:shimmer 4s infinite}
 
-.nav {
-  max-width: 1150px;
-  margin: auto;
-  padding: 18px 22px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
+@media(max-width:850px){
+  .nav-links{gap:12px}
+  .nav-links a{font-size:10px}
+  .category-grid{grid-template-columns:repeat(2,1fr)}
 }
-
-.logo {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 30px;
-  font-weight: 700;
-  letter-spacing: 4px;
-  color: var(--purple);
-}
-
-nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 18px;
-  font-size: 13px;
-}
-
-nav a {
-  color: var(--muted);
-  transition: .3s;
-}
-
-nav a:hover,
-nav a.active {
-  color: var(--purple);
-}
-
-.hero {
-  max-width: 900px;
-  margin: auto;
-  padding: 85px 22px 55px;
-  text-align: center;
-}
-
-.eyebrow {
-  color: var(--purple);
-  letter-spacing: 3px;
-  font-size: 12px;
-  margin-bottom: 18px;
-}
-
-.hero h1 {
-  font-size: clamp(38px, 7vw, 68px);
-  line-height: 1.5;
-  margin-bottom: 18px;
-}
-
-.hero h1 span {
-  color: var(--purple);
-}
-
-.hero p {
-  max-width: 650px;
-  margin: auto;
-  color: var(--muted);
-  line-height: 2;
-  font-size: 15px;
-}
-
-.search-wrap {
-  max-width: 620px;
-  margin: 35px auto 0;
-}
-
-.search {
-  width: 100%;
-  padding: 16px 20px;
-  border-radius: 14px;
-  background: #15111f;
-  border: 1px solid var(--border);
-  color: white;
-  font-family: inherit;
-  outline: none;
-  font-size: 14px;
-}
-
-.search:focus {
-  border-color: var(--purple);
-}
-
-main {
-  max-width: 1150px;
-  margin: auto;
-  padding: 20px 22px 80px;
-}
-
-.section-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 15px;
-  margin: 25px 0;
-}
-
-.section-head h2 {
-  font-size: 25px;
-}
-
-.section-head p {
-  color: var(--muted);
-  font-size: 12px;
-}
-
-.filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 30px;
-}
-
-.filter {
-  border: 1px solid var(--border);
-  background: #14111d;
-  color: var(--muted);
-  padding: 10px 17px;
-  border-radius: 30px;
-  font-family: inherit;
-  cursor: pointer;
-  transition: .25s;
-}
-
-.filter:hover,
-.filter.active {
-  background: var(--purple-dark);
-  color: white;
-  border-color: var(--purple-dark);
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 22px;
-}
-
-.quote-card {
-  position: relative;
-  background: linear-gradient(145deg, #171321, #0e0c14);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 30px;
-  min-height: 270px;
-  display: flex;
-  flex-direction: column;
-  transition: .3s;
-  overflow: hidden;
-}
-
-.quote-card::before {
-  content: "“";
-  position: absolute;
-  top: -15px;
-  right: 18px;
-  font-family: Georgia, serif;
-  font-size: 110px;
-  color: rgba(167,139,250,.07);
-  pointer-events: none;
-}
-
-.quote-card:hover {
-  transform: translateY(-5px);
-  border-color: rgba(167,139,250,.5);
-  box-shadow: 0 15px 45px rgba(109,40,217,.12);
-}
-
-.quote-category {
-  color: var(--purple);
-  font-size: 11px;
-  letter-spacing: 1px;
-  margin-bottom: 22px;
-}
-
-.quote-text {
-  font-size: 19px;
-  line-height: 2.1;
-  color: #eee7fa;
-  margin-bottom: 25px;
-  white-space: pre-line;
-}
-
-.quote-bottom {
-  margin-top: auto;
-  padding-top: 18px;
-  border-top: 1px solid var(--border);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
-}
-
-.quote-bottom small {
-  color: var(--muted);
-  font-size: 11px;
-}
-
-.copy-btn {
-  background: transparent;
-  border: 1px solid var(--border);
-  color: var(--purple);
-  padding: 8px 13px;
-  border-radius: 25px;
-  font-family: inherit;
-  font-size: 11px;
-  cursor: pointer;
-  transition: .25s;
-}
-
-.copy-btn:hover {
-  background: var(--purple);
-  color: #08070d;
-}
-
-.empty {
-  display: none;
-  text-align: center;
-  color: var(--muted);
-  padding: 50px 10px;
-  line-height: 2;
-}
-
-footer {
-  border-top: 1px solid var(--border);
-  text-align: center;
-  padding: 30px 20px;
-  color: var(--muted);
-  font-size: 12px;
-  line-height: 2;
-}
-
-footer span {
-  color: var(--purple);
-}
-
-@media (max-width: 850px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
+@media(max-width:650px){
+  .navbar{min-height:72px}
+  .logo{font-size:28px}
+  .menu{display:block}
+  .nav-links{
+    display:none;position:absolute;top:72px;left:0;right:0;
+    background:#0b0a08;padding:15px 5%;
+    flex-direction:column;align-items:stretch;gap:0;
   }
-
-  .nav {
-    flex-direction: column;
-  }
-
-  nav {
-    justify-content: center;
-  }
-}
-
-@media (max-width: 560px) {
-  .grid {
-    grid-template-columns: 1fr;
-  }
-
-  .hero {
-    padding-top: 60px;
-  }
-
-  .section-head {
-    align-items: flex-start;
-    flex-direction: column;
-  }
+  .nav-links.show{display:flex}
+  .nav-links a{padding:13px 0;border-bottom:1px solid var(--line)}
+  .nav-links .contact{margin-top:10px;text-align:center}
+  .hero{min-height:480px}
+  .hero-content{padding:80px 0}
+  .hero h1{font-size:85px}
+  .hero-quote{font-size:15px}
+  .featured-card{padding:65px 20px}
+  .category-grid{gap:10px}
+  .category-card{min-height:130px;padding:17px}
+  .section-head h2{font-size:49px}
+  .quote-grid{grid-template-columns:1fr}
+  .quote-card{min-height:220px;padding:25px}
+  .quote-text{font-size:17px}
+  .footer-top{flex-direction:column;align-items:flex-start}
 }
 </style>
 </head>
@@ -322,330 +275,379 @@ footer span {
 <body>
 
 <header>
-  <div class="nav">
-
-    <a class="logo" href="index.html">EARENDEL</a>
-
-    <nav>
+  <div class="container navbar">
+    <a href="index.html" class="logo">EARENDEL</a>
+    <button class="menu" id="menuBtn" aria-label="Open menu">☰</button>
+    <nav class="nav-links" id="navLinks">
       <a href="index.html">Home</a>
       <a href="poetry.html">Poetry</a>
       <a href="stories.html">Stories</a>
       <a href="novels.html">Novels</a>
-      <a class="active" href="quotes.html">Quotes</a>
+      <a href="quotes.html" class="active">Quotes</a>
       <a href="about.html">About</a>
+      <a href="contact.html" class="contact">Contact ↗</a>
     </nav>
-
   </div>
 </header>
 
-<section class="hero">
-
-  <div class="eyebrow">WORDS THAT STAY</div>
-
-  <h1>কিছু কথা <span>থেকে যায়</span></h1>
-
-  <p>
-    কিছু কথা খুব ছোট হয়, অথচ তার অনুভূতি অনেক বড়।
-    কিছু শব্দ আমাদের নিজের গল্পের মতো মনে হয়।
-    EARENDEL-এর উক্তি সংগ্রহে খুঁজে নাও
-    তোমার মনের সঙ্গে মিলে যাওয়া কথাগুলো।
-  </p>
-
-  <div class="search-wrap">
-    <input
-      class="search"
-      id="search"
-      type="search"
-      placeholder="উক্তি বা অনুভূতি খুঁজুন..."
-    >
-  </div>
-
-</section>
-
 <main>
 
-  <div class="section-head">
-    <h2>উক্তি সংগ্রহ</h2>
-    <p id="count">৯টি উক্তি</p>
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content reveal">
+      <div class="eyebrow">WORDS THAT STAY FOREVER</div>
+      <h1>Words<br><span>To Feel.</span></h1>
+      <p>
+        কিছু কথা শুধু পড়ার জন্য নয়, অনুভব করার জন্য।
+        কিছু শব্দ অল্প সময়েই মনের গভীরে জায়গা করে নেয়।
+        এখানে খুঁজে নাও তোমার অনুভূতির সঙ্গে মিলে যাওয়া কিছু কথা।
+      </p>
+      <a href="#library" class="hero-btn">DISCOVER THE WORDS ↗</a>
+    </div>
   </div>
+  <div class="hero-quote">"Some words never leave."</div>
+</section>
 
-  <div class="filters">
+<!-- INTRO -->
+<section class="intro container reveal">
+  <div class="eyebrow">THE ART OF EXPRESSION</div>
+  <h2>A Few Words. <span class="gold">A Thousand Feelings.</span></h2>
+  <p>
+    ভালোবাসা, বিচ্ছেদ, জীবন কিংবা স্বপ্ন—
+    প্রতিটি অনুভূতির জন্য থাকে কিছু বিশেষ শব্দ।
+    EARENDEL-এর এই সংগ্রহ সেই শব্দগুলোরই ছোট্ট ঠিকানা।
+  </p>
+</section>
 
-    <button class="filter active" data-category="all">
-      সব উক্তি
-    </button>
-
-    <button class="filter" data-category="love">
-      প্রেম
-    </button>
-
-    <button class="filter" data-category="sad">
-      বিরহ
-    </button>
-
-    <button class="filter" data-category="life">
-      জীবন
-    </button>
-
-    <button class="filter" data-category="hope">
-      আশা
-    </button>
-
+<!-- FEATURED -->
+<section class="featured container reveal">
+  <div class="featured-card">
+    <div class="eyebrow">TODAY'S FEATURED THOUGHT</div>
+    <div class="big-mark">“</div>
+    <blockquote id="featuredText">
+      কিছু মানুষ জীবনে থেকে যায় না,
+      অথচ তাদের রেখে যাওয়া অনুভূতিগুলো
+      সারাজীবন থেকে যায়।
+    </blockquote>
+    <cite>— EARENDEL ORIGINAL</cite>
+    <button class="copy-featured" id="copyFeatured">COPY THIS THOUGHT ↗</button>
   </div>
+</section>
 
-  <div class="grid" id="quoteGrid">
-
-    <article class="quote-card" data-category="love">
-
-      <div class="quote-category">প্রেম · অনুভূতি</div>
-
-      <p class="quote-text">কিছু মানুষ জীবনে আসে,
-আর আমাদের সাধারণ দিনগুলোকে
-অসাধারণ করে দিয়ে যায়।</p>
-
-      <div class="quote-bottom">
-        <small>প্রেম</small>
-        <button class="copy-btn">কপি ↗</button>
-      </div>
-
-    </article>
-
-    <article class="quote-card" data-category="sad">
-
-      <div class="quote-category">বিরহ · স্মৃতি</div>
-
-      <p class="quote-text">তুমি চলে যাওয়ার পর
-শহরটা একই আছে,
-শুধু আমার ফেরার
-ঠিকানাটা বদলে গেছে।</p>
-
-      <div class="quote-bottom">
-        <small>বিরহ</small>
-        <button class="copy-btn">কপি ↗</button>
-      </div>
-
-    </article>
-
-    <article class="quote-card" data-category="life">
-
-      <div class="quote-category">জীবন · উপলব্ধি</div>
-
-      <p class="quote-text">সব প্রশ্নের উত্তর পাওয়া জরুরি নয়।
-কিছু প্রশ্নের সঙ্গে
-শান্তিতে বাঁচতে শেখাটাও
-এক ধরনের উত্তর।</p>
-
-      <div class="quote-bottom">
-        <small>জীবন</small>
-        <button class="copy-btn">কপি ↗</button>
-      </div>
-
-    </article>
-
-    <article class="quote-card" data-category="hope">
-
-      <div class="quote-category">আশা · নতুন শুরু</div>
-
-      <p class="quote-text">একটা খারাপ দিন
-তোমার পুরো জীবনের গল্প নয়।
-আগামীকাল আবার
-নতুন করে শুরু করা যায়।</p>
-
-      <div class="quote-bottom">
-        <small>আশা</small>
-        <button class="copy-btn">কপি ↗</button>
-      </div>
-
-    </article>
-
-    <article class="quote-card" data-category="love">
-
-      <div class="quote-category">প্রেম · সম্পর্ক</div>
-
-      <p class="quote-text">ভালোবাসা মানে শুধু
-কাউকে কাছে পাওয়া নয়।
-তার না-বলা কথাগুলোও
-মন দিয়ে বুঝতে শেখা।</p>
-
-      <div class="quote-bottom">
-        <small>প্রেম</small>
-        <button class="copy-btn">কপি ↗</button>
-      </div>
-
-    </article>
-
-    <article class="quote-card" data-category="sad">
-
-      <div class="quote-category">বিরহ · অপেক্ষা</div>
-
-      <p class="quote-text">কিছু অপেক্ষার শেষ হয় না,
-তবুও একদিন
-অপেক্ষা করতে করতে
-মানুষ নিজের জীবনকে
-আবার ভালোবাসতে শেখে।</p>
-
-      <div class="quote-bottom">
-        <small>বিরহ</small>
-        <button class="copy-btn">কপি ↗</button>
-      </div>
-
-    </article>
-
-    <article class="quote-card" data-category="life">
-
-      <div class="quote-category">জীবন · আত্মঅন্বেষণ</div>
-
-      <p class="quote-text">নিজেকে হারিয়ে
-সবাইকে খুশি রাখার চেয়ে,
-নিজেকে বুঝে
-কয়েকজনের পাশে থাকা
-অনেক বেশি সুন্দর।</p>
-
-      <div class="quote-bottom">
-        <small>জীবন</small>
-        <button class="copy-btn">কপি ↗</button>
-      </div>
-
-    </article>
-
-    <article class="quote-card" data-category="hope">
-
-      <div class="quote-category">আশা · সাহস</div>
-
-      <p class="quote-text">ধীরে এগিয়ে যাওয়া
-থেমে যাওয়া নয়।
-তোমার নিজের গতিতেও
-একদিন পথ শেষ হবে।</p>
-
-      <div class="quote-bottom">
-        <small>আশা</small>
-        <button class="copy-btn">কপি ↗</button>
-      </div>
-
-    </article>
-
-    <article class="quote-card" data-category="love">
-
-      <div class="quote-category">প্রেম · স্মৃতি</div>
-
-      <p class="quote-text">কিছু নাম
-শুধু মুখে উচ্চারণ হয় না,
-নীরবতার মধ্যেও
-বারবার ফিরে আসে।</p>
-
-      <div class="quote-bottom">
-        <small>প্রেম</small>
-        <button class="copy-btn">কপি ↗</button>
-      </div>
-
-    </article>
-
+<!-- CATEGORIES -->
+<section class="categories container reveal">
+  <div class="eyebrow" style="margin-bottom:22px">EXPLORE BY FEELING</div>
+  <div class="category-grid">
+    <a href="#library" class="category-card" data-jump="love">
+      <div class="category-number">01</div>
+      <div><h3>Love</h3><p>THE LANGUAGE OF HEARTS</p></div>
+    </a>
+    <a href="#library" class="category-card" data-jump="sadness">
+      <div class="category-number">02</div>
+      <div><h3>Sadness</h3><p>WORDS OF SILENCE</p></div>
+    </a>
+    <a href="#library" class="category-card" data-jump="life">
+      <div class="category-number">03</div>
+      <div><h3>Life</h3><p>THOUGHTS OF EXISTENCE</p></div>
+    </a>
+    <a href="#library" class="category-card" data-jump="motivation">
+      <div class="category-number">04</div>
+      <div><h3>Motivation</h3><p>THE POWER TO RISE</p></div>
+    </a>
   </div>
+</section>
 
-  <div class="empty" id="empty">
-    কোনো উক্তি খুঁজে পাওয়া যায়নি।<br>
-    অন্য শব্দ দিয়ে চেষ্টা করো।
+<!-- QUOTE LIBRARY -->
+<section class="library" id="library">
+  <div class="container">
+
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">THE QUOTE COLLECTION</div>
+        <h2>Words & <span class="gold">Feelings.</span></h2>
+      </div>
+      <p>Read slowly.<br>Feel deeply.</p>
+    </div>
+
+    <div class="toolbar">
+      <input class="search" id="search" type="search" placeholder="উক্তি বা শব্দ দিয়ে খুঁজুন...">
+      <div class="filters">
+        <button class="filter active" data-filter="all">All</button>
+        <button class="filter" data-filter="love">Love</button>
+        <button class="filter" data-filter="sadness">Sadness</button>
+        <button class="filter" data-filter="life">Life</button>
+        <button class="filter" data-filter="motivation">Motivation</button>
+      </div>
+    </div>
+
+    <div class="quote-grid" id="quoteGrid">
+
+      <article class="quote-card reveal" data-category="love">
+        <div>
+          <div class="quote-mark">“</div>
+          <p class="quote-text">ভালোবাসা মানে শুধু কাছে থাকা নয়, দূরে থেকেও কারো মঙ্গল চেয়ে যাওয়া।</p>
+        </div>
+        <div class="quote-card-footer">
+          <span class="quote-category">LOVE</span>
+          <button class="copy-btn">COPY QUOTE ↗</button>
+        </div>
+      </article>
+
+      <article class="quote-card reveal" data-category="sadness">
+        <div>
+          <div class="quote-mark">“</div>
+          <p class="quote-text">সব কান্নার শব্দ হয় না, কিছু অশ্রু নীরবেই হৃদয়ের ভেতর ঝরে।</p>
+        </div>
+        <div class="quote-card-footer">
+          <span class="quote-category">SADNESS</span>
+          <button class="copy-btn">COPY QUOTE ↗</button>
+        </div>
+      </article>
+
+      <article class="quote-card reveal" data-category="life">
+        <div>
+          <div class="quote-mark">“</div>
+          <p class="quote-text">জীবন কখনো নিখুঁত হয় না, তবুও তার অসম্পূর্ণতাতেই লুকিয়ে থাকে সৌন্দর্য।</p>
+        </div>
+        <div class="quote-card-footer">
+          <span class="quote-category">LIFE</span>
+          <button class="copy-btn">COPY QUOTE ↗</button>
+        </div>
+      </article>
+
+      <article class="quote-card reveal" data-category="motivation">
+        <div>
+          <div class="quote-mark">“</div>
+          <p class="quote-text">ধীরে এগিয়ে যাওয়া ব্যর্থতা নয়, থেমে যাওয়াটাই কখনো কখনো সবচেয়ে বড় হার।</p>
+        </div>
+        <div class="quote-card-footer">
+          <span class="quote-category">MOTIVATION</span>
+          <button class="copy-btn">COPY QUOTE ↗</button>
+        </div>
+      </article>
+
+      <article class="quote-card reveal" data-category="love">
+        <div>
+          <div class="quote-mark">“</div>
+          <p class="quote-text">কিছু মানুষকে ভালোবাসতে হয় কোনো প্রত্যাশা ছাড়াই, কারণ তাদের হাসিটুকুই অনেক।</p>
+        </div>
+        <div class="quote-card-footer">
+          <span class="quote-category">LOVE</span>
+          <button class="copy-btn">COPY QUOTE ↗</button>
+        </div>
+      </article>
+
+      <article class="quote-card reveal" data-category="sadness">
+        <div>
+          <div class="quote-mark">“</div>
+          <p class="quote-text">যে মানুষটি একসময় সব জানত, একদিন তার কাছেই নিজের কথা বলতে ভয় লাগে।</p>
+        </div>
+        <div class="quote-card-footer">
+          <span class="quote-category">SADNESS</span>
+          <button class="copy-btn">COPY QUOTE ↗</button>
+        </div>
+      </article>
+
+      <article class="quote-card reveal" data-category="life">
+        <div>
+          <div class="quote-mark">“</div>
+          <p class="quote-text">সময় কাউকে বদলে দেয় না, সময় শুধু মানুষের ভেতরে লুকিয়ে থাকা সত্যগুলো দেখিয়ে দেয়।</p>
+        </div>
+        <div class="quote-card-footer">
+          <span class="quote-category">LIFE</span>
+          <button class="copy-btn">COPY QUOTE ↗</button>
+        </div>
+      </article>
+
+      <article class="quote-card reveal" data-category="motivation">
+        <div>
+          <div class="quote-mark">“</div>
+          <p class="quote-text">নিজের গল্পের লেখক নিজেই হও, অন্য কারো কলমে নিজের পরিচয় লিখতে দিও না।</p>
+        </div>
+        <div class="quote-card-footer">
+          <span class="quote-category">MOTIVATION</span>
+          <button class="copy-btn">COPY QUOTE ↗</button>
+        </div>
+      </article>
+
+      <article class="quote-card reveal" data-category="love">
+        <div>
+          <div class="quote-mark">“</div>
+          <p class="quote-text">একটি পরিচিত কণ্ঠ কখনো কখনো হাজারো সুন্দর শব্দের চেয়েও বেশি শান্তি দেয়।</p>
+        </div>
+        <div class="quote-card-footer">
+          <span class="quote-category">LOVE</span>
+          <button class="copy-btn">COPY QUOTE ↗</button>
+        </div>
+      </article>
+
+      <article class="quote-card reveal" data-category="sadness">
+        <div>
+          <div class="quote-mark">“</div>
+          <p class="quote-text">অভিমান জমতে জমতে একদিন এমন দেয়াল হয়, যার ওপারে আর কেউ কাউকে দেখতে পায় না।</p>
+        </div>
+        <div class="quote-card-footer">
+          <span class="quote-category">SADNESS</span>
+          <button class="copy-btn">COPY QUOTE ↗</button>
+        </div>
+      </article>
+
+      <article class="quote-card reveal" data-category="life">
+        <div>
+          <div class="quote-mark">“</div>
+          <p class="quote-text">প্রতিটি হারিয়ে যাওয়া পথ ভুল পথ নয়, কিছু পথ আমাদের নিজের কাছে ফিরিয়ে আনে।</p>
+        </div>
+        <div class="quote-card-footer">
+          <span class="quote-category">LIFE</span>
+          <button class="copy-btn">COPY QUOTE ↗</button>
+        </div>
+      </article>
+
+      <article class="quote-card reveal" data-category="motivation">
+        <div>
+          <div class="quote-mark">“</div>
+          <p class="quote-text">স্বপ্ন পূরণের প্রথম শর্ত নিখুঁত হওয়া নয়, প্রথম পদক্ষেপটি নেওয়ার সাহস থাকা।</p>
+        </div>
+        <div class="quote-card-footer">
+          <span class="quote-category">MOTIVATION</span>
+          <button class="copy-btn">COPY QUOTE ↗</button>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="empty" id="empty">এই অনুভূতির কোনো উক্তি পাওয়া যায়নি। অন্য কিছু খুঁজে দেখো।</div>
   </div>
+</section>
+
+<!-- CLOSING -->
+<section class="closing reveal">
+  <div class="container">
+    <div class="eyebrow">A THOUGHT TO REMEMBER</div>
+    <h2>Let the words speak.<br><span class="gold">Let the heart listen.</span></h2>
+    <p>কিছু কথা কাগজে লেখা থাকে, আর কিছু কথা থেকে যায় মানুষের ভেতরে।</p>
+  </div>
+</section>
 
 </main>
 
 <footer>
-  <div>© 2026 <span>EARENDEL</span></div>
-  <div>শব্দের ভেতরে, অনুভূতির বাইরে।</div>
+  <div class="container">
+    <div class="footer-top">
+      <a href="index.html" class="footer-logo">EARENDEL</a>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="poetry.html">Poetry</a>
+        <a href="stories.html">Stories</a>
+        <a href="novels.html">Novels</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+    <div class="copyright">© 2026 EARENDEL — A World Beyond Words.</div>
+  </div>
 </footer>
 
 <script>
-const cards = document.querySelectorAll(".quote-card");
-const filters = document.querySelectorAll(".filter");
-const search = document.getElementById("search");
-const count = document.getElementById("count");
-const empty = document.getElementById("empty");
-
-let currentCategory = "all";
-
-function updateQuotes() {
-
-  const query = search.value.trim().toLowerCase();
-
-  let visible = 0;
-
-  cards.forEach(card => {
-
-    const category = card.dataset.category;
-    const text = card.innerText.toLowerCase();
-
-    const categoryMatch =
-      currentCategory === "all" ||
-      category === currentCategory;
-
-    const searchMatch = text.includes(query);
-
-    const show = categoryMatch && searchMatch;
-
-    card.style.display = show ? "flex" : "none";
-
-    if (show) visible++;
-
-  });
-
-  count.textContent = visible + "টি উক্তি";
-
-  empty.style.display = visible ? "none" : "block";
-
+// COPY QUOTES
+async function copyText(text,button){
+  const original=button.textContent;
+  try{
+    await navigator.clipboard.writeText(text);
+    button.textContent="COPIED ✓";
+  }catch(error){
+    button.textContent="COPY UNAVAILABLE";
+  }
+  setTimeout(()=>button.textContent=original,1600);
 }
 
-filters.forEach(button => {
+document.querySelectorAll(".quote-card").forEach(card=>{
+  const button=card.querySelector(".copy-btn");
+  button.addEventListener("click",()=>{
+    copyText(card.querySelector(".quote-text").textContent.trim(),button);
+  });
+});
 
-  button.addEventListener("click", () => {
+const featuredText=document.getElementById("featuredText");
+document.getElementById("copyFeatured").addEventListener("click",function(){
+  copyText(featuredText.textContent.trim(),this);
+});
 
-    filters.forEach(item => {
-      item.classList.remove("active");
-    });
+// SEARCH AND FILTER
+const search=document.getElementById("search");
+const filters=document.querySelectorAll(".filter");
+const cards=document.querySelectorAll(".quote-card");
+const empty=document.getElementById("empty");
+let activeFilter="all";
 
+function filterQuotes(){
+  const query=search.value.trim().toLowerCase();
+  let count=0;
+
+  cards.forEach(card=>{
+    const categoryMatch=
+      activeFilter==="all"||card.dataset.category===activeFilter;
+    const searchMatch=card.innerText.toLowerCase().includes(query);
+    const show=categoryMatch&&searchMatch;
+
+    card.style.display=show?"flex":"none";
+    if(show)count++;
+  });
+
+  empty.style.display=count?"none":"block";
+}
+
+search.addEventListener("input",filterQuotes);
+
+filters.forEach(button=>{
+  button.addEventListener("click",()=>{
+    filters.forEach(b=>b.classList.remove("active"));
     button.classList.add("active");
-
-    currentCategory = button.dataset.category;
-
-    updateQuotes();
-
+    activeFilter=button.dataset.filter;
+    filterQuotes();
   });
-
 });
 
-search.addEventListener("input", updateQuotes);
+// CATEGORY SHORTCUTS
+document.querySelectorAll("[data-jump]").forEach(link=>{
+  link.addEventListener("click",()=>{
+    const category=link.dataset.jump;
+    activeFilter=category;
+    filters.forEach(b=>{
+      b.classList.toggle("active",b.dataset.filter===category);
+    });
+    filterQuotes();
+  });
+});
 
-document.querySelectorAll(".copy-btn").forEach(button => {
+// MOBILE NAVIGATION
+const menuBtn=document.getElementById("menuBtn");
+const navLinks=document.getElementById("navLinks");
 
-  button.addEventListener("click", async () => {
+menuBtn.addEventListener("click",()=>{
+  navLinks.classList.toggle("show");
+  menuBtn.textContent=navLinks.classList.contains("show")?"✕":"☰";
+});
 
-    const card = button.closest(".quote-card");
-    const quote = card.querySelector(".quote-text").innerText;
+navLinks.querySelectorAll("a").forEach(link=>{
+  link.addEventListener("click",()=>{
+    navLinks.classList.remove("show");
+    menuBtn.textContent="☰";
+  });
+});
 
-    try {
-
-      await navigator.clipboard.writeText(quote);
-
-      button.textContent = "কপি হয়েছে ✓";
-
-      setTimeout(() => {
-        button.textContent = "কপি ↗";
-      }, 1500);
-
-    } catch (error) {
-
-      button.textContent = "কপি করা যায়নি";
-
-      setTimeout(() => {
-        button.textContent = "কপি ↗";
-      }, 1500);
-
+// SCROLL REVEAL
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
     }
-
   });
+},{threshold:.1});
 
-});
-
-updateQuotes();
+document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
 </script>
 
 </body>
