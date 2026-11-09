@@ -4,1143 +4,662 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080808">
+<title>About — EARENDEL</title>
 
-<title>Our Universe — EARENDEL</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Noto+Serif+Bengali:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-:root {
-  --bg: #08070c;
-  --white: #f4efff;
-  --muted: #aaa2b8;
-  --purple: #b99aff;
-  --line: rgba(190,158,255,.19);
-  --serif: "Cormorant Garamond", serif;
-  --bangla: "Noto Serif Bengali", serif;
+:root{
+  --bg:#080808;
+  --panel:#11100e;
+  --gold:#c8a45d;
+  --light:#ead5a0;
+  --text:#eee7d9;
+  --muted:#a59d90;
+  --line:rgba(200,164,93,.2);
 }
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Noto Serif Bengali',serif}
+a{text-decoration:none;color:inherit}
+button{font:inherit}
+.container{width:min(1120px,90%);margin:auto}
+.eyebrow{font-size:10px;letter-spacing:4px;color:var(--gold)}
+.gold{color:var(--gold)}
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* HEADER */
+header{
+  position:sticky;top:0;z-index:30;
+  background:rgba(8,8,8,.95);
+  backdrop-filter:blur(15px);
+  border-bottom:1px solid var(--line);
 }
-
-html {
-  scroll-behavior: smooth;
+.navbar{
+  min-height:80px;display:flex;
+  justify-content:space-between;align-items:center;gap:20px;
 }
-
-body {
-  background: var(--bg);
-  color: var(--white);
-  font-family: var(--bangla);
-  overflow-x: hidden;
+.logo{
+  font-family:'Cormorant Garamond',serif;
+  font-size:34px;letter-spacing:6px;
+  color:var(--light);font-weight:600;
 }
-
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-::selection {
-  background: #9b72e9;
-  color: white;
-}
-
-/* BACKGROUND */
-
-.ambient {
-  position: fixed;
-  inset: 0;
-  z-index: -2;
-  pointer-events: none;
-  background:
-    radial-gradient(ellipse at 15% 15%, rgba(100,50,160,.16), transparent 38%),
-    radial-gradient(ellipse at 85% 55%, rgba(74,38,130,.12), transparent 40%),
-    #08070c;
-}
-
-.grain {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  opacity: .12;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.3'/%3E%3C/svg%3E");
-}
-
-.container {
-  width: min(1160px, calc(100% - 48px));
-  margin: auto;
-}
-
-/* NAVIGATION */
-
-header {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  z-index: 20;
-  border-bottom: 1px solid rgba(255,255,255,.08);
-}
-
-.nav {
-  width: min(1320px, calc(100% - 48px));
-  min-height: 86px;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 25px;
-}
-
-.logo {
-  font-family: var(--serif);
-  font-size: 32px;
-  font-weight: 700;
-  letter-spacing: 5px;
-  color: var(--purple);
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 27px;
-  flex-wrap: wrap;
-}
-
-.nav-links a {
-  font-family: var(--serif);
-  font-size: 16px;
-  color: #b9b1c7;
-  transition: .3s;
-}
-
-.nav-links a:hover,
-.nav-links a.active {
-  color: var(--purple);
-}
-
-.nav-label {
-  font-family: var(--serif);
-  font-size: 12px;
-  letter-spacing: 3px;
-  color: var(--purple);
+.nav-links{display:flex;align-items:center;gap:23px}
+.nav-links a{font-size:11px;color:#c1b9aa;transition:.3s}
+.nav-links a:hover,.nav-links .active{color:var(--gold)}
+.nav-links .contact{border:1px solid var(--gold);padding:10px 16px;color:var(--gold)}
+.menu{
+  display:none;background:none;color:var(--gold);
+  border:1px solid var(--line);padding:8px 12px;
+  font-size:20px;cursor:pointer;
 }
 
 /* HERO */
-
-.hero {
-  min-height: 760px;
-  padding: 180px 24px 100px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  overflow: hidden;
+.hero{
+  min-height:670px;position:relative;
+  display:flex;align-items:center;overflow:hidden;
+  background:
+    linear-gradient(90deg,rgba(8,8,8,.98) 5%,rgba(8,8,8,.78) 48%,rgba(8,8,8,.18)),
+    url('https://images.unsplash.com/photo-1474932430478-367dbb6832c1?w=1800') center/cover;
+  border-bottom:1px solid var(--line);
+}
+.hero:after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(0deg,#080808,transparent 35%);
+  pointer-events:none;
+}
+.hero-content{position:relative;z-index:2;padding:110px 0;max-width:800px}
+.hero h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(75px,12vw,145px);
+  font-weight:400;line-height:.82;
+  margin:32px 0;
+}
+.hero h1 span{color:var(--gold);font-style:italic}
+.hero p{
+  max-width:560px;color:#c5bcad;
+  font-size:13px;line-height:2.4;
+}
+.hero-bottom{
+  display:flex;align-items:center;gap:18px;
+  margin-top:38px;
+}
+.hero-line{width:65px;height:1px;background:var(--gold)}
+.hero-bottom span{font-size:9px;letter-spacing:3px;color:var(--light)}
+.hero-index{
+  position:absolute;right:5%;bottom:50px;z-index:2;
+  font-family:'Cormorant Garamond',serif;
+  color:var(--gold);font-size:20px;font-style:italic;
 }
 
-.hero::before,
-.hero::after {
-  content: "";
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
+/* OPENING */
+.opening{padding:115px 0 105px}
+.opening-grid{
+  display:grid;grid-template-columns:.75fr 1.25fr;
+  gap:75px;align-items:start;
 }
-
-.hero::before {
-  width: 600px;
-  height: 600px;
-  background: rgba(114,66,190,.12);
-  filter: blur(100px);
-  top: 5%;
-  left: 50%;
-  transform: translateX(-50%);
+.opening-side{position:sticky;top:120px}
+.opening-side .number{
+  font-family:'Cormorant Garamond',serif;
+  font-size:120px;line-height:1;color:rgba(200,164,93,.35);
 }
-
-.hero::after {
-  width: 350px;
-  height: 350px;
-  border: 1px solid rgba(183,147,255,.13);
-  box-shadow:
-    0 0 100px rgba(151,103,240,.09),
-    inset 0 0 100px rgba(151,103,240,.06);
+.opening-side h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:38px;font-weight:400;margin-top:15px;
 }
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 950px;
+.opening-copy h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(43px,6vw,68px);
+  font-weight:400;line-height:1.05;margin-bottom:30px;
 }
-
-.kicker {
-  color: var(--purple);
-  font-family: var(--serif);
-  font-size: 13px;
-  letter-spacing: 7px;
-  text-transform: uppercase;
-  margin-bottom: 35px;
+.opening-copy p{
+  font-size:13px;line-height:2.5;color:var(--muted);
+  margin-bottom:20px;
 }
-
-.hero h1 {
-  font-family: var(--serif);
-  font-weight: 500;
-  font-size: clamp(75px, 13vw, 155px);
-  line-height: .9;
-  letter-spacing: -4px;
-  color: #f8f3ff;
-}
-
-.hero h1 span {
-  display: block;
-  font-style: italic;
-  color: var(--purple);
-  font-size: .65em;
-  margin-top: 24px;
-  letter-spacing: 1px;
-}
-
-.hero-bangla {
-  font-size: clamp(19px, 3vw, 25px);
-  line-height: 2.2;
-  color: #d3c9e3;
-  margin-top: 45px;
-}
-
-.hero-note {
-  font-family: var(--serif);
-  font-size: 13px;
-  letter-spacing: 4px;
-  color: #827790;
-  margin-top: 35px;
-}
-
-.scroll-cue {
-  position: absolute;
-  bottom: 35px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: var(--serif);
-  font-size: 11px;
-  letter-spacing: 4px;
-  color: #93869f;
-}
-
-/* INTRODUCTION */
-
-.intro {
-  padding: 145px 0;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-}
-
-.section-label {
-  font-family: var(--serif);
-  font-size: 12px;
-  letter-spacing: 5px;
-  color: var(--purple);
-  margin-bottom: 30px;
-}
-
-.intro-layout {
-  display: grid;
-  grid-template-columns: .7fr 1.3fr;
-  gap: 80px;
-  align-items: start;
-}
-
-.intro-number {
-  font-family: var(--serif);
-  font-size: 130px;
-  line-height: .8;
-  color: rgba(183,147,255,.17);
-}
-
-.intro h2 {
-  font-size: clamp(30px, 5vw, 48px);
-  font-weight: 500;
-  line-height: 1.8;
-  margin-bottom: 30px;
-}
-
-.intro h2 span {
-  color: var(--purple);
-}
-
-.intro-text {
-  color: var(--muted);
-  font-size: 15px;
-  line-height: 2.5;
-  max-width: 700px;
+.opening-copy .highlight{
+  color:var(--light);font-size:16px;
+  border-left:2px solid var(--gold);
+  padding:10px 0 10px 22px;margin:30px 0;
 }
 
 /* MANIFESTO */
-
-.manifesto {
-  padding: 150px 24px;
-  text-align: center;
-  position: relative;
+.manifesto{
+  position:relative;padding:120px 0;
+  background:
+    linear-gradient(rgba(8,8,8,.88),rgba(8,8,8,.94)),
+    url('https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=1600') center/cover fixed;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  text-align:center;
 }
-
-.manifesto .small {
-  font-family: var(--serif);
-  color: var(--purple);
-  letter-spacing: 6px;
-  font-size: 12px;
-  margin-bottom: 35px;
+.manifesto-content{max-width:850px;margin:auto}
+.manifesto .mark{
+  font-family:'Cormorant Garamond',serif;
+  color:var(--gold);font-size:105px;line-height:.7;
 }
-
-.manifesto blockquote {
-  max-width: 970px;
-  margin: auto;
-  font-size: clamp(28px, 5vw, 55px);
-  line-height: 2;
-  font-weight: 400;
+.manifesto h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(40px,7vw,82px);
+  font-weight:400;line-height:1.1;margin:25px 0;
 }
-
-.manifesto blockquote span {
-  color: var(--purple);
+.manifesto p{
+  max-width:650px;margin:auto;
+  font-size:13px;line-height:2.4;color:#c0b7a7;
 }
-
-.manifesto .credit {
-  margin-top: 35px;
-  color: #827790;
-  font-family: var(--serif);
-  font-size: 13px;
-  letter-spacing: 4px;
+.manifesto-sign{
+  margin-top:32px;font-size:10px;
+  color:var(--gold);letter-spacing:4px;
 }
 
 /* PHILOSOPHY */
+.philosophy{padding:110px 0}
+.section-title{text-align:center;margin-bottom:55px}
+.section-title h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(45px,6vw,70px);
+  font-weight:400;margin:12px 0;
+}
+.section-title p{font-size:12px;color:var(--muted);line-height:2}
+.values-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.value-card{
+  min-height:280px;padding:30px;
+  background:linear-gradient(145deg,#17140e,#0d0c0a);
+  border:1px solid var(--line);
+  transition:.4s;position:relative;overflow:hidden;
+}
+.value-card:hover{transform:translateY(-7px);border-color:var(--gold)}
+.value-number{
+  font-family:'Cormorant Garamond',serif;
+  font-size:42px;color:rgba(200,164,93,.45);
+}
+.value-card h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:34px;font-weight:400;
+  color:var(--light);margin:32px 0 14px;
+}
+.value-card p{font-size:12px;line-height:2.2;color:var(--muted)}
 
-.philosophy {
-  padding: 110px 0 140px;
-  background: linear-gradient(180deg, transparent, rgba(69,39,105,.09), transparent);
+/* JOURNEY */
+.journey{
+  padding:100px 0;background:#0c0b09;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+}
+.journey-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:70px;align-items:center;
+}
+.journey-image{position:relative;min-height:490px}
+.journey-image img{
+  width:100%;height:490px;object-fit:cover;
+  filter:grayscale(35%);border:1px solid var(--line);
+}
+.image-caption{
+  position:absolute;bottom:-20px;right:-20px;
+  background:var(--gold);color:#080808;
+  padding:17px 24px;
+  font-family:'Cormorant Garamond',serif;
+  font-size:21px;font-style:italic;
+}
+.journey-copy h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(48px,6vw,70px);
+  font-weight:400;line-height:1.05;margin:18px 0 25px;
+}
+.journey-copy p{
+  font-size:13px;color:var(--muted);
+  line-height:2.4;margin-bottom:18px;
+}
+.journey-note{
+  margin-top:28px;padding:20px;
+  border:1px solid var(--line);
+  color:var(--light);font-size:12px;line-height:2.2;
 }
 
-.philosophy-heading {
-  display: flex;
-  justify-content: space-between;
-  align-items: end;
-  gap: 30px;
-  margin-bottom: 65px;
+/* CREATOR */
+.creator{padding:110px 0}
+.creator-box{
+  display:grid;grid-template-columns:.8fr 1.2fr;
+  border:1px solid var(--line);
+  background:linear-gradient(120deg,#17130d,#0d0c0a);
+}
+.creator-visual{
+  min-height:380px;display:flex;
+  align-items:center;justify-content:center;
+  background:radial-gradient(ellipse,rgba(200,164,93,.12),transparent 70%);
+}
+.creator-symbol{
+  width:190px;height:190px;border:1px solid var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  transform:rotate(45deg);
+  box-shadow:0 0 50px rgba(200,164,93,.08);
+}
+.creator-symbol span{
+  transform:rotate(-45deg);
+  font-family:'Cormorant Garamond',serif;
+  font-size:64px;color:var(--gold);
+}
+.creator-copy{
+  padding:55px;display:flex;
+  flex-direction:column;justify-content:center;
+}
+.creator-copy h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:55px;font-weight:400;margin:15px 0;
+}
+.creator-copy p{
+  font-size:13px;line-height:2.4;color:var(--muted);
+}
+.creator-label{
+  margin-top:24px;color:var(--gold);
+  font-size:10px;letter-spacing:3px;
 }
 
-.philosophy-heading h2 {
-  font-size: clamp(30px, 5vw, 50px);
-  font-weight: 500;
-  line-height: 1.7;
+/* FINAL */
+.final-section{
+  padding:110px 0;text-align:center;
+  background:radial-gradient(ellipse at center,rgba(200,164,93,.1),transparent 70%);
 }
-
-.philosophy-heading h2 span {
-  color: var(--purple);
+.final-section h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(45px,7vw,80px);
+  font-weight:400;line-height:1.1;
 }
-
-.philosophy-heading p {
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 2;
-  max-width: 300px;
+.final-section p{
+  max-width:570px;margin:22px auto 0;
+  color:var(--muted);font-size:12px;line-height:2.3;
 }
-
-.values-list {
-  border-top: 1px solid var(--line);
+.final-button{
+  display:inline-block;margin-top:32px;
+  padding:14px 24px;background:var(--gold);
+  color:#080808;font-size:10px;letter-spacing:2px;
+  transition:.3s;
 }
-
-.value {
-  display: grid;
-  grid-template-columns: 90px 1fr 1fr;
-  gap: 30px;
-  align-items: center;
-  padding: 35px 0;
-  border-bottom: 1px solid var(--line);
-  transition: .3s;
-}
-
-.value:hover {
-  padding-left: 15px;
-  background: linear-gradient(90deg, rgba(167,139,250,.07), transparent);
-}
-
-.value-no {
-  font-family: var(--serif);
-  font-size: 27px;
-  color: var(--purple);
-}
-
-.value h3 {
-  font-size: 23px;
-  font-weight: 500;
-}
-
-.value p {
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 2;
-}
-
-/* COLLECTION */
-
-.collection {
-  padding: 120px 0;
-}
-
-.collection-title {
-  text-align: center;
-  margin-bottom: 65px;
-}
-
-.collection-title h2 {
-  font-size: clamp(32px, 5vw, 55px);
-  font-weight: 500;
-  line-height: 1.7;
-}
-
-.collection-title h2 span {
-  color: var(--purple);
-}
-
-.collection-title p {
-  color: var(--muted);
-  margin-top: 15px;
-  font-size: 14px;
-  line-height: 2;
-}
-
-.collection-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-}
-
-.collection-item {
-  padding: 42px 25px;
-  border-right: 1px solid var(--line);
-  transition: .3s;
-}
-
-.collection-item:last-child {
-  border-right: none;
-}
-
-.collection-item:hover {
-  background: rgba(155,112,230,.08);
-}
-
-.collection-item .symbol {
-  font-family: var(--serif);
-  font-size: 43px;
-  color: var(--purple);
-  margin-bottom: 25px;
-}
-
-.collection-item h3 {
-  font-size: 19px;
-  font-weight: 500;
-  margin-bottom: 12px;
-}
-
-.collection-item p {
-  font-size: 12px;
-  line-height: 2;
-  color: var(--muted);
-}
-
-.collection-item a {
-  display: inline-block;
-  font-family: var(--serif);
-  font-size: 14px;
-  color: var(--purple);
-  margin-top: 22px;
-}
-
-/* CLOSING */
-
-.closing {
-  padding: 145px 24px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  border-top: 1px solid var(--line);
-}
-
-.closing::before {
-  content: "";
-  position: absolute;
-  width: 450px;
-  height: 450px;
-  background: rgba(110,66,180,.12);
-  filter: blur(100px);
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%,-50%);
-}
-
-.closing-content {
-  position: relative;
-  z-index: 2;
-}
-
-.closing .overline {
-  font-family: var(--serif);
-  color: var(--purple);
-  letter-spacing: 6px;
-  font-size: 12px;
-  margin-bottom: 30px;
-}
-
-.closing h2 {
-  font-family: var(--serif);
-  font-size: clamp(55px, 10vw, 105px);
-  line-height: 1;
-  font-weight: 500;
-  letter-spacing: 2px;
-}
-
-.closing h2 span {
-  display: block;
-  color: var(--purple);
-  font-style: italic;
-  margin-top: 15px;
-}
-
-.closing p {
-  max-width: 600px;
-  margin: 35px auto;
-  font-size: 15px;
-  line-height: 2.4;
-  color: #b9b0c8;
-}
-
-.closing-link {
-  display: inline-block;
-  border: 1px solid var(--purple);
-  padding: 14px 32px;
-  color: var(--purple);
-  font-family: var(--serif);
-  letter-spacing: 2px;
-  font-size: 14px;
-  transition: .3s;
-}
-
-.closing-link:hover {
-  background: var(--purple);
-  color: #08070c;
-}
+.final-button:hover{background:var(--light);transform:translateY(-4px)}
 
 /* FOOTER */
-
-footer {
-  padding: 55px 24px 30px;
-  border-top: 1px solid var(--line);
+footer{background:#050505;padding:40px 0 22px}
+.footer-top{
+  display:flex;justify-content:space-between;
+  align-items:center;gap:20px;flex-wrap:wrap;padding-bottom:25px;
+}
+.footer-logo{
+  font-family:'Cormorant Garamond',serif;
+  font-size:30px;letter-spacing:5px;color:var(--gold);
+}
+.footer-links{display:flex;gap:18px;flex-wrap:wrap}
+.footer-links a{font-size:10px;color:var(--muted)}
+.footer-links a:hover{color:var(--gold)}
+.copyright{
+  border-top:1px solid var(--line);padding-top:20px;
+  text-align:center;color:#777064;font-size:10px;
 }
 
-.footer-top {
-  max-width: 1160px;
-  margin: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 30px;
-  padding-bottom: 35px;
+/* ANIMATION */
+.reveal{opacity:0;transform:translateY(30px);transition:1s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.hero h1 span{animation:glow 4s ease-in-out infinite}
+@keyframes glow{
+  0%,100%{text-shadow:0 0 0 transparent}
+  50%{text-shadow:0 0 35px rgba(200,164,93,.3)}
 }
 
-.footer-logo {
-  font-family: var(--serif);
-  font-size: 35px;
-  letter-spacing: 5px;
-  color: var(--purple);
+@media(max-width:850px){
+  .nav-links{gap:12px}
+  .nav-links a{font-size:10px}
+  .opening-grid{gap:35px}
+  .values-grid{grid-template-columns:repeat(2,1fr)}
+  .journey-grid{gap:35px}
 }
-
-.footer-tagline {
-  font-size: 12px;
-  color: var(--muted);
-  margin-top: 8px;
-}
-
-.footer-links {
-  display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.footer-links a {
-  color: var(--muted);
-  font-family: var(--serif);
-  font-size: 14px;
-}
-
-.footer-links a:hover {
-  color: var(--purple);
-}
-
-.footer-bottom {
-  max-width: 1160px;
-  margin: auto;
-  border-top: 1px solid var(--line);
-  padding-top: 22px;
-  display: flex;
-  justify-content: space-between;
-  gap: 15px;
-  flex-wrap: wrap;
-  color: #81778e;
-  font-family: var(--serif);
-  font-size: 12px;
-  letter-spacing: 1px;
-}
-
-/* REVEAL ANIMATION */
-
-.reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity .8s ease, transform .8s ease;
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* RESPONSIVE */
-
-@media (max-width: 850px) {
-  .nav {
-    flex-direction: column;
-    justify-content: center;
-    padding: 18px 0;
+@media(max-width:650px){
+  .navbar{min-height:72px}
+  .logo{font-size:28px}
+  .menu{display:block}
+  .nav-links{
+    display:none;position:absolute;top:72px;left:0;right:0;
+    background:#0b0a08;padding:15px 5%;
+    flex-direction:column;align-items:stretch;gap:0;
   }
-
-  .nav-links {
-    justify-content: center;
-    gap: 15px;
-  }
-
-  .intro-layout {
-    grid-template-columns: 1fr;
-    gap: 35px;
-  }
-
-  .intro-number {
-    font-size: 90px;
-  }
-
-  .collection-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .collection-item:nth-child(2) {
-    border-right: none;
-  }
-
-  .collection-item:nth-child(-n+2) {
-    border-bottom: 1px solid var(--line);
-  }
-
-  .value {
-    grid-template-columns: 55px 1fr;
-  }
-
-  .value p {
-    grid-column: 2;
-  }
-
-  .philosophy-heading {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-}
-
-@media (max-width: 550px) {
-  .container {
-    width: calc(100% - 36px);
-  }
-
-  .nav {
-    width: calc(100% - 25px);
-  }
-
-  .nav-links {
-    gap: 12px;
-  }
-
-  .nav-links a {
-    font-size: 14px;
-  }
-
-  .nav-label {
-    display: none;
-  }
-
-  .hero {
-    min-height: 680px;
-    padding-top: 180px;
-  }
-
-  .hero h1 {
-    letter-spacing: -2px;
-  }
-
-  .hero::after {
-    width: 290px;
-    height: 290px;
-  }
-
-  .intro {
-    padding: 95px 0;
-  }
-
-  .manifesto {
-    padding: 100px 22px;
-  }
-
-  .philosophy {
-    padding: 85px 0;
-  }
-
-  .value {
-    gap: 15px;
-  }
-
-  .collection {
-    padding: 85px 0;
-  }
-
-  .collection-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .collection-item {
-    border-right: none;
-    border-bottom: 1px solid var(--line);
-    padding: 30px 15px;
-  }
-
-  .collection-item:last-child {
-    border-bottom: none;
-  }
-
-  .closing {
-    padding: 100px 20px;
-  }
-
-  .footer-top {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .footer-bottom {
-    flex-direction: column;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  .reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
-  }
+  .nav-links.show{display:flex}
+  .nav-links a{padding:13px 0;border-bottom:1px solid var(--line)}
+  .nav-links .contact{margin-top:10px;text-align:center}
+  .hero{min-height:560px;background-position:60% center}
+  .hero-content{padding:85px 0}
+  .hero h1{font-size:90px}
+  .opening{padding:80px 0}
+  .opening-grid{grid-template-columns:1fr;gap:20px}
+  .opening-side{position:static}
+  .opening-side .number{font-size:75px}
+  .opening-side h3{font-size:30px}
+  .manifesto{padding:85px 0;background-attachment:scroll}
+  .values-grid{grid-template-columns:1fr}
+  .value-card{min-height:230px}
+  .journey-grid{grid-template-columns:1fr;gap:55px}
+  .journey-image{min-height:350px}
+  .journey-image img{height:350px}
+  .image-caption{right:0}
+  .creator-box{grid-template-columns:1fr}
+  .creator-visual{min-height:280px}
+  .creator-copy{padding:30px}
+  .creator-copy h2{font-size:44px}
+  .footer-top{flex-direction:column;align-items:flex-start}
 }
 </style>
 </head>
 
 <body>
 
-<div class="ambient"></div>
-<div class="grain"></div>
-
 <header>
-  <div class="nav">
-
-    <a class="logo" href="index.html">EARENDEL</a>
-
-    <nav class="nav-links">
+  <div class="container navbar">
+    <a href="index.html" class="logo">EARENDEL</a>
+    <button class="menu" id="menuBtn" aria-label="Open menu">☰</button>
+    <nav class="nav-links" id="navLinks">
       <a href="index.html">Home</a>
       <a href="poetry.html">Poetry</a>
       <a href="stories.html">Stories</a>
       <a href="novels.html">Novels</a>
       <a href="quotes.html">Quotes</a>
-      <a class="active" href="about.html">About</a>
+      <a href="about.html" class="active">About</a>
+      <a href="contact.html" class="contact">Contact ↗</a>
     </nav>
-
-    <div class="nav-label">OUR UNIVERSE</div>
-
   </div>
 </header>
 
+<main>
+
 <!-- HERO -->
-
 <section class="hero">
-
-  <div class="hero-content">
-
-    <div class="kicker">A WORLD BEYOND WORDS</div>
-
-    <h1>
-      EARENDEL
-      <span>Beyond the Words.</span>
-    </h1>
-
-    <p class="hero-bangla">
-      কিছু অনুভূতির কোনো নাম হয় না।
-      <br>
-      কিছু গল্পের কোনো শেষ হয় না।
-      <br>
-      আর কিছু শব্দ, চিরকাল থেকে যায়।
-    </p>
-
-    <div class="hero-note">
-      A PLACE FOR THE UNWRITTEN
+  <div class="container">
+    <div class="hero-content reveal">
+      <div class="eyebrow">THE SOUL BEHIND THE WORDS</div>
+      <h1>Beyond<br><span>The Words.</span></h1>
+      <p>
+        প্রতিটি শব্দের পেছনে থাকে একটি অনুভূতি,
+        প্রতিটি গল্পের পেছনে থাকে একটি পৃথিবী।
+        EARENDEL সেই পৃথিবীগুলোর জন্যই তৈরি—
+        যেখানে শব্দ শুধু পড়া হয় না, অনুভবও করা হয়।
+      </p>
+      <div class="hero-bottom">
+        <div class="hero-line"></div>
+        <span>A LITERARY SPACE FOR EVERY SOUL</span>
+      </div>
     </div>
-
   </div>
-
-  <div class="scroll-cue">SCROLL TO EXPLORE ↓</div>
-
+  <div class="hero-index">A little world of words · Est. 2026</div>
 </section>
 
-<!-- INTRODUCTION -->
-
-<section class="intro">
-  <div class="container">
-
-    <div class="section-label reveal">
-      01 — THE BEGINNING
+<!-- OPENING STORY -->
+<section class="opening container">
+  <div class="opening-grid">
+    <div class="opening-side reveal">
+      <div class="eyebrow">01 — OUR BEGINNING</div>
+      <div class="number">01</div>
+      <h3>A Thought.<br>A Feeling.<br><span class="gold">A Beginning.</span></h3>
     </div>
 
-    <div class="intro-layout">
+    <div class="opening-copy reveal">
+      <div class="eyebrow">THE STORY OF EARENDEL</div>
+      <h2>Not just a website.<br><span class="gold">A place to feel.</span></h2>
 
-      <div class="intro-number reveal">
-        01
+      <p>
+        পৃথিবীতে অসংখ্য মানুষ আছে, অসংখ্য গল্প আছে।
+        কেউ নিজের অনুভূতি লিখে রাখে কবিতায়,
+        কেউ গল্পের আড়ালে লুকিয়ে রাখে নিজের জীবন,
+        আবার কেউ কয়েকটি শব্দেই প্রকাশ করে হাজারো না বলা কথা।
+      </p>
+
+      <p>
+        সেই অনুভূতিগুলোকে এক জায়গায় নিয়ে আসার
+        একটি ছোট্ট ভাবনা থেকেই EARENDEL-এর যাত্রা।
+        এটি এমন একটি সাহিত্যিক পরিসর, যেখানে কবিতা,
+        গল্প, উপন্যাস এবং মনের কথা একসঙ্গে জায়গা পায়।
+      </p>
+
+      <div class="highlight">
+        "কারণ কিছু অনুভূতির জন্য পৃথিবীর সব শব্দও যথেষ্ট নয়।"
       </div>
 
-      <div class="reveal">
-
-        <h2>
-          EARENDEL শুধু একটি নাম নয়,
-          <span>এটি অনুভূতির একটি ঠিকানা।</span>
-        </h2>
-
-        <div class="intro-text">
-
-          <p>
-            পৃথিবীতে প্রতিদিন অসংখ্য কথা বলা হয়।
-            কিছু কথা বাতাসে মিলিয়ে যায়,
-            কিছু কথা মানুষের মনে থেকে যায়।
-            আর কিছু কথা কখনো বলা হয় না—
-            শুধু অনুভব করা হয়।
-          </p>
-
-          <p>
-            সেই না-বলা কথাগুলোর জন্যই EARENDEL।
-            এমন একটি সাহিত্যিক পরিসর,
-            যেখানে কবিতা, গল্প, উপন্যাস ও
-            ছোট ছোট অনুভূতি নিজেদের মতো করে
-            জায়গা খুঁজে পায়।
-          </p>
-
-          <p>
-            আমরা বিশ্বাস করি, শব্দ শুধু পড়ার জন্য নয়।
-            কখনো শব্দ কাউকে মনে করিয়ে দেয়,
-            কখনো কাউকে সাহস দেয়,
-            কখনো নিজের সঙ্গে নতুন করে পরিচয় করিয়ে দেয়।
-          </p>
-
-        </div>
-
-      </div>
-
+      <p>
+        আমরা বিশ্বাস করি, সাহিত্য কেবল বিনোদন নয়।
+        এটি মানুষের ভাবনা, স্মৃতি, কল্পনা এবং অনুভূতির
+        সঙ্গে অন্য মানুষের একটি অদৃশ্য সংযোগ তৈরি করে।
+      </p>
     </div>
-
   </div>
 </section>
 
 <!-- MANIFESTO -->
-
 <section class="manifesto reveal">
-
-  <div class="small">OUR PHILOSOPHY</div>
-
-  <blockquote>
-    "সব অনুভূতি প্রকাশ করা যায় না,
-    সব গল্প কাউকে বলা যায় না।
-    তবুও প্রতিটি মানুষের ভেতরে
-    <span>একটি নিজস্ব পৃথিবী</span> থাকে।"
-  </blockquote>
-
-  <div class="credit">
-    — THE SPIRIT OF EARENDEL
+  <div class="container manifesto-content">
+    <div class="eyebrow">WHAT WE BELIEVE</div>
+    <div class="mark">“</div>
+    <h2>Every soul has a story.<br><span class="gold">Every story deserves a voice.</span></h2>
+    <p>
+      যে অনুভূতি মুখে বলা যায় না, কখনো তা কবিতায় জায়গা খুঁজে নেয়।
+      যে স্মৃতি ভুলে থাকা যায় না, কখনো তা গল্প হয়ে ফিরে আসে।
+      আর যে স্বপ্ন একা দেখা হয়, সাহিত্য তাকে সবার সঙ্গে ভাগ করে নেয়।
+    </p>
+    <div class="manifesto-sign">— THE EARENDEL PHILOSOPHY</div>
   </div>
-
 </section>
 
 <!-- PHILOSOPHY -->
-
 <section class="philosophy">
-
   <div class="container">
-
-    <div class="philosophy-heading reveal">
-
-      <div>
-        <div class="section-label">02 — WHAT WE BELIEVE</div>
-
-        <h2>
-          আমাদের কাছে<br>
-          <span>সাহিত্য মানে কী?</span>
-        </h2>
-      </div>
-
-      <p>
-        আমাদের কাছে সাহিত্য কোনো প্রতিযোগিতা নয়।
-        এটি নিজেকে প্রকাশ করার,
-        অন্যকে বোঝার এবং অনুভূতির সঙ্গে
-        সংযুক্ত থাকার একটি পথ।
-      </p>
-
+    <div class="section-title reveal">
+      <div class="eyebrow">02 — WHAT DEFINES US</div>
+      <h2>The Things <span class="gold">We Believe In.</span></h2>
+      <p>আমাদের কাছে সাহিত্য শুধু কিছু লেখা নয়, এর চেয়েও অনেক বেশি কিছু।</p>
     </div>
 
-    <div class="values-list">
+    <div class="values-grid">
 
-      <div class="value reveal">
-
-        <div class="value-no">01</div>
-
-        <h3>অনুভূতির স্বাধীনতা</h3>
-
+      <article class="value-card reveal">
+        <div class="value-number">01</div>
+        <h3>Emotion</h3>
         <p>
-          প্রতিটি মানুষের অনুভূতি আলাদা।
-          এখানে প্রতিটি অনুভূতির নিজস্ব
-          একটি জায়গা আছে।
+          অনুভূতিই প্রতিটি সুন্দর লেখার প্রাণ।
+          হাসি, কান্না, ভালোবাসা কিংবা অভিমান—
+          প্রতিটি অনুভূতিরই রয়েছে নিজস্ব সৌন্দর্য।
         </p>
+      </article>
 
-      </div>
-
-      <div class="value reveal">
-
-        <div class="value-no">02</div>
-
-        <h3>শব্দের সৌন্দর্য</h3>
-
+      <article class="value-card reveal">
+        <div class="value-number">02</div>
+        <h3>Creativity</h3>
         <p>
-          সাধারণ কিছু শব্দও অসাধারণ হয়ে ওঠে,
-          যখন তার ভেতরে সত্যিকারের অনুভূতি
-          জড়িয়ে থাকে।
+          কল্পনা আমাদের নতুন পৃথিবী দেখায়।
+          প্রতিটি নতুন ভাবনা ও সৃষ্টিশীল শব্দ
+          আমাদের নিয়ে যায় অজানা এক জগতে।
         </p>
+      </article>
 
-      </div>
-
-      <div class="value reveal">
-
-        <div class="value-no">03</div>
-
-        <h3>গল্পের গভীরতা</h3>
-
+      <article class="value-card reveal">
+        <div class="value-number">03</div>
+        <h3>Expression</h3>
         <p>
-          একটি গল্প শুধু তার শুরু ও শেষ নয়।
-          গল্পের আসল সৌন্দর্য থাকে
-          তার ভেতরের যাত্রায়।
+          নিজের মনের কথা প্রকাশ করার অধিকার
+          প্রতিটি মানুষের রয়েছে।
+          শব্দ হোক নিজের অনুভূতি প্রকাশের স্বাধীন জায়গা।
         </p>
+      </article>
 
-      </div>
-
-      <div class="value reveal">
-
-        <div class="value-no">04</div>
-
-        <h3>নিজের মতো থাকা</h3>
-
+      <article class="value-card reveal">
+        <div class="value-number">04</div>
+        <h3>Literature</h3>
         <p>
-          প্রত্যেকের নিজস্ব কণ্ঠস্বর আছে।
-          আমরা সেই স্বতন্ত্রতা ও সৃজনশীলতাকে
-          মূল্য দিতে চাই।
+          সাহিত্য মানুষকে ভাবতে শেখায়,
+          অনুভব করতে শেখায় এবং
+          নিজের বাইরের পৃথিবীকে চিনতে সাহায্য করে।
         </p>
+      </article>
 
-      </div>
+      <article class="value-card reveal">
+        <div class="value-number">05</div>
+        <h3>Connection</h3>
+        <p>
+          কখনো অপরিচিত কারো লেখা পড়েও
+          মনে হয় সে যেন আমারই মনের কথা বলছে।
+          এই অদৃশ্য সংযোগই সাহিত্যের সৌন্দর্য।
+        </p>
+      </article>
+
+      <article class="value-card reveal">
+        <div class="value-number">06</div>
+        <h3>Originality</h3>
+        <p>
+          প্রতিটি মানুষের নিজস্ব কণ্ঠ ও ভাবনা রয়েছে।
+          নিজস্ব সৃষ্টিকে সম্মান করা এবং
+          মৌলিক লেখাকে গুরুত্ব দেওয়া আমাদের বিশ্বাস।
+        </p>
+      </article>
 
     </div>
-
   </div>
-
 </section>
 
-<!-- COLLECTION -->
+<!-- JOURNEY -->
+<section class="journey">
+  <div class="container journey-grid">
+    <div class="journey-image reveal">
+      <img
+        src="https://images.unsplash.com/photo-1455390582262-044cdead277a?w=1000"
+        alt="An open notebook and writing desk"
+        loading="lazy"
+      >
+      <div class="image-caption">A world written in words.</div>
+    </div>
 
-<section class="collection">
-
-  <div class="container">
-
-    <div class="collection-title reveal">
-
-      <div class="section-label">03 — EXPLORE OUR WORLD</div>
-
-      <h2>
-        আমাদের ছোট্ট <span>সাহিত্যিক জগৎ</span>
-      </h2>
+    <div class="journey-copy reveal">
+      <div class="eyebrow">03 — OUR JOURNEY</div>
+      <h2>From a small thought to a <span class="gold">literary world.</span></h2>
 
       <p>
-        প্রতিটি বিভাগে রয়েছে অনুভূতির
-        ভিন্ন একটি দরজা।
+        EARENDEL একটি চলমান সৃজনশীল উদ্যোগ।
+        এর প্রতিটি পৃষ্ঠা, প্রতিটি লেখা এবং প্রতিটি
+        নতুন ধারণার মাধ্যমে আমরা একটি সুন্দর সাহিত্যিক
+        পরিবেশ গড়ে তুলতে চাই।
       </p>
 
+      <p>
+        এখানে কবিতার জন্য থাকবে আলাদা জায়গা,
+        গল্পের জন্য থাকবে নতুন দরজা,
+        উপন্যাসের জন্য থাকবে নিজস্ব সংগ্রহশালা
+        এবং ছোট ছোট উক্তির জন্য থাকবে অনুভূতির এক ভুবন।
+      </p>
+
+      <p>
+        আমাদের লক্ষ্য শুধু একটি ওয়েবসাইট তৈরি করা নয়;
+        বরং এমন একটি জায়গা তৈরি করা,
+        যেখানে শব্দের প্রতি ভালোবাসা মানুষকে বারবার ফিরিয়ে আনবে।
+      </p>
+
+      <div class="journey-note">
+        This is not the end of a story.
+        This is where a thousand stories begin.
+      </div>
     </div>
-
-    <div class="collection-grid">
-
-      <div class="collection-item reveal">
-
-        <div class="symbol">01.</div>
-
-        <h3>Poetry</h3>
-
-        <p>
-          না-বলা অনুভূতি,
-          ছন্দ আর শব্দের ভেতর
-          হারিয়ে যাওয়ার একটি জায়গা।
-        </p>
-
-        <a href="poetry.html">EXPLORE POETRY ↗</a>
-
-      </div>
-
-      <div class="collection-item reveal">
-
-        <div class="symbol">02.</div>
-
-        <h3>Stories</h3>
-
-        <p>
-          ছোট ছোট গল্পের ভেতর
-          জীবনের বড় বড়
-          সত্য খুঁজে পাওয়ার জায়গা।
-        </p>
-
-        <a href="stories.html">EXPLORE STORIES ↗</a>
-
-      </div>
-
-      <div class="collection-item reveal">
-
-        <div class="symbol">03.</div>
-
-        <h3>Novels</h3>
-
-        <p>
-          দীর্ঘ যাত্রা, জীবন্ত চরিত্র
-          আর শেষ না হওয়া
-          কিছু অনুভূতির গল্প।
-        </p>
-
-        <a href="novels.html">EXPLORE NOVELS ↗</a>
-
-      </div>
-
-      <div class="collection-item reveal">
-
-        <div class="symbol">04.</div>
-
-        <h3>Quotes</h3>
-
-        <p>
-          অল্প কিছু শব্দ,
-          অথচ তার ভেতরে
-          লুকিয়ে থাকা অনেক কথা।
-        </p>
-
-        <a href="quotes.html">EXPLORE QUOTES ↗</a>
-
-      </div>
-
-    </div>
-
   </div>
-
 </section>
 
-<!-- CLOSING -->
+<!-- CREATOR -->
+<section class="creator">
+  <div class="container">
+    <div class="eyebrow" style="margin-bottom:22px">04 — THE CREATOR'S CORNER</div>
 
-<section class="closing">
+    <div class="creator-box reveal">
+      <div class="creator-visual">
+        <div class="creator-symbol">
+          <span>E.</span>
+        </div>
+      </div>
 
-  <div class="closing-content reveal">
+      <div class="creator-copy">
+        <div class="eyebrow">BEHIND THE CREATION</div>
+        <h2>A Mind Behind <span class="gold">EARENDEL.</span></h2>
+        <p>
+          প্রতিটি সৃষ্টির পেছনে থাকে একটি ভাবনা,
+          একটি স্বপ্ন এবং কিছুটা সাহস।
+          EARENDEL-ও তেমনই একটি সৃজনশীল উদ্যোগ—
+          শব্দ ও সাহিত্যের প্রতি ভালোবাসা থেকে
+          গড়ে ওঠা একটি নিজস্ব পৃথিবী।
+        </p>
+        <p style="margin-top:16px">
+          এই প্ল্যাটফর্মের যাত্রা এখনও চলমান।
+          প্রতিটি নতুন ধারণা, প্রতিটি উন্নয়ন
+          এবং প্রতিটি সৃজনশীল প্রচেষ্টার মাধ্যমে
+          EARENDEL-কে আরও সুন্দর করে গড়ে তোলাই লক্ষ্য।
+        </p>
+        <div class="creator-label">FOUNDER & CREATOR · EARENDEL</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <div class="overline">04 — A NOTE TO YOU</div>
-
-    <h2>
-      Stay a little.
-      <span>Feel a little more.</span>
-    </h2>
-
+<!-- FINAL -->
+<section class="final-section reveal">
+  <div class="container">
+    <div class="eyebrow">05 — YOU ARE PART OF THE STORY</div>
+    <h2>Welcome to<br><span class="gold">Our World.</span></h2>
     <p>
-      হয়তো কোনো একটি কবিতায় তুমি
-      নিজের গল্প খুঁজে পাবে।
-      হয়তো কোনো একটি বাক্য তোমাকে
-      অতীতের কারও কথা মনে করিয়ে দেবে।
-      অথবা হয়তো এখানে এসে
-      তুমি কিছুক্ষণ নিজের মতো থাকতে পারবে।
+      তুমি হয়তো একটি কবিতা পড়তে এসেছ,
+      হয়তো খুঁজছ একটি গল্প, কিংবা এমন কিছু শব্দ
+      যা তোমার মনের কথাগুলো বলে দেবে।
+      যেকোনো কারণেই আসো না কেন—
+      EARENDEL-এর এই ছোট্ট পৃথিবীতে তোমাকে স্বাগতম।
     </p>
-
-    <a class="closing-link" href="index.html">
-      ENTER EARENDEL →
-    </a>
-
+    <a href="index.html" class="final-button">EXPLORE EARENDEL ↗</a>
   </div>
-
 </section>
 
-<!-- FOOTER -->
+</main>
 
 <footer>
-
-  <div class="footer-top">
-
-    <div>
-      <div class="footer-logo">EARENDEL</div>
-      <div class="footer-tagline">
-        A universe written in feelings.
+  <div class="container">
+    <div class="footer-top">
+      <a href="index.html" class="footer-logo">EARENDEL</a>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="poetry.html">Poetry</a>
+        <a href="stories.html">Stories</a>
+        <a href="novels.html">Novels</a>
+        <a href="quotes.html">Quotes</a>
+        <a href="contact.html">Contact</a>
       </div>
     </div>
-
-    <div class="footer-links">
-      <a href="index.html">Home</a>
-      <a href="poetry.html">Poetry</a>
-      <a href="stories.html">Stories</a>
-      <a href="novels.html">Novels</a>
-      <a href="quotes.html">Quotes</a>
-    </div>
-
+    <div class="copyright">© 2026 EARENDEL — A World Beyond Words.</div>
   </div>
-
-  <div class="footer-bottom">
-    <span>© 2026 EARENDEL. ALL RIGHTS RESERVED.</span>
-    <span>MADE WITH WORDS & FEELINGS.</span>
-  </div>
-
 </footer>
 
 <script>
-const observer = new IntersectionObserver(
-  (entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-        observer.unobserve(entry.target);
-      }
-    });
-  },
-  {
-    threshold: 0.12
-  }
-);
+// MOBILE NAVIGATION
+const menuBtn=document.getElementById("menuBtn");
+const navLinks=document.getElementById("navLinks");
 
-document.querySelectorAll(".reveal").forEach(element => {
-  observer.observe(element);
+menuBtn.addEventListener("click",()=>{
+  navLinks.classList.toggle("show");
+  menuBtn.textContent=navLinks.classList.contains("show")?"✕":"☰";
+});
+
+navLinks.querySelectorAll("a").forEach(link=>{
+  link.addEventListener("click",()=>{
+    navLinks.classList.remove("show");
+    menuBtn.textContent="☰";
+  });
+});
+
+// SCROLL REVEAL
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:.1});
+
+document.querySelectorAll(".reveal").forEach(el=>{
+  observer.observe(el);
 });
 </script>
 
