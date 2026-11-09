@@ -1,1 +1,991 @@
 
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Novels | EARENDEL</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Bengali:wght@400;500;600;700&family=Cormorant+Garamond:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #08070d;
+  --card: #12101b;
+  --purple: #a78bfa;
+  --purple-dark: #6d28d9;
+  --text: #f4efff;
+  --muted: #a7a0b7;
+  --border: rgba(167,139,250,.18);
+}
+
+body {
+  background:
+    radial-gradient(ellipse at top, #211334 0%, #08070d 48%);
+  color: var(--text);
+  font-family: 'Noto Serif Bengali', serif;
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+header {
+  border-bottom: 1px solid var(--border);
+  background: rgba(8,7,13,.85);
+  backdrop-filter: blur(15px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.nav {
+  max-width: 1150px;
+  margin: auto;
+  padding: 18px 22px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: var(--purple);
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  font-size: 13px;
+}
+
+nav a {
+  color: var(--muted);
+  transition: .3s;
+}
+
+nav a:hover,
+nav a.active {
+  color: var(--purple);
+}
+
+.hero {
+  max-width: 900px;
+  margin: auto;
+  padding: 85px 22px 55px;
+  text-align: center;
+}
+
+.eyebrow {
+  color: var(--purple);
+  letter-spacing: 3px;
+  font-size: 12px;
+  margin-bottom: 18px;
+}
+
+.hero h1 {
+  font-size: clamp(38px, 7vw, 68px);
+  line-height: 1.4;
+  margin-bottom: 18px;
+}
+
+.hero h1 span {
+  color: var(--purple);
+}
+
+.hero p {
+  max-width: 650px;
+  margin: auto;
+  color: var(--muted);
+  line-height: 2;
+  font-size: 15px;
+}
+
+.search-wrap {
+  max-width: 620px;
+  margin: 35px auto 0;
+}
+
+.search {
+  width: 100%;
+  padding: 16px 20px;
+  border-radius: 14px;
+  background: #15111f;
+  border: 1px solid var(--border);
+  color: white;
+  font-family: inherit;
+  outline: none;
+  font-size: 14px;
+}
+
+.search:focus {
+  border-color: var(--purple);
+}
+
+main {
+  max-width: 1150px;
+  margin: auto;
+  padding: 20px 22px 80px;
+}
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin: 25px 0;
+}
+
+.section-head h2 {
+  font-size: 25px;
+}
+
+.section-head p {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.filter {
+  border: 1px solid var(--border);
+  background: #14111d;
+  color: var(--muted);
+  padding: 10px 17px;
+  border-radius: 30px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: .25s;
+}
+
+.filter:hover,
+.filter.active {
+  background: var(--purple-dark);
+  color: white;
+  border-color: var(--purple-dark);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.book {
+  background: linear-gradient(145deg, #171321, #0e0c14);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 25px;
+  transition: .3s;
+  display: flex;
+  flex-direction: column;
+  min-height: 300px;
+}
+
+.book:hover {
+  transform: translateY(-5px);
+  border-color: rgba(167,139,250,.55);
+  box-shadow: 0 15px 45px rgba(109,40,217,.12);
+}
+
+.book-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.book-icon {
+  width: 48px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(145deg, #6d28d9, #25153e);
+  border-radius: 7px 12px 12px 7px;
+  font-size: 23px;
+  box-shadow: inset 4px 0 rgba(255,255,255,.12);
+}
+
+.tag {
+  color: var(--purple);
+  background: rgba(167,139,250,.1);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 6px 10px;
+  font-size: 11px;
+}
+
+.book h3 {
+  font-size: 23px;
+  margin-bottom: 10px;
+}
+
+.author {
+  color: var(--purple);
+  font-size: 12px;
+  margin-bottom: 16px;
+}
+
+.description {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 2;
+  margin-bottom: 22px;
+}
+
+.book-bottom {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  border-top: 1px solid var(--border);
+  padding-top: 18px;
+}
+
+.book-bottom small {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.read-btn {
+  background: transparent;
+  border: 1px solid var(--purple);
+  color: var(--purple);
+  padding: 9px 14px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 12px;
+  transition: .25s;
+}
+
+.read-btn:hover {
+  background: var(--purple);
+  color: #08070d;
+}
+
+.empty {
+  display: none;
+  text-align: center;
+  color: var(--muted);
+  padding: 50px 10px;
+  line-height: 2;
+}
+
+footer {
+  border-top: 1px solid var(--border);
+  text-align: center;
+  padding: 30px 20px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 2;
+}
+
+footer span {
+  color: var(--purple);
+}
+
+/* Reading modal */
+
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  background: rgba(0,0,0,.82);
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.modal.show {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.modal-box {
+  background: #100d18;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  width: 100%;
+  max-width: 760px;
+  margin: 30px auto;
+  padding: 30px;
+}
+
+.modal-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 15px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 20px;
+  margin-bottom: 25px;
+}
+
+.modal-head h2 {
+  font-size: 26px;
+  line-height: 1.6;
+}
+
+.modal-author {
+  color: var(--purple);
+  font-size: 12px;
+  margin-top: 8px;
+}
+
+.close {
+  background: #21182e;
+  color: white;
+  border: 1px solid var(--border);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.modal-content {
+  color: #d6cfe4;
+  font-size: 15px;
+  line-height: 2.5;
+  white-space: pre-line;
+}
+
+@media (max-width: 850px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .nav {
+    flex-direction: column;
+  }
+
+  nav {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 560px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding-top: 60px;
+  }
+
+  .section-head {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .modal-box {
+    padding: 22px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="nav">
+    <a class="logo" href="index.html">EARENDEL</a>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="poetry.html">Poetry</a>
+      <a href="stories.html">Stories</a>
+      <a class="active" href="novels.html">Novels</a>
+      <a href="quotes.html">Quotes</a>
+      <a href="about.html">About</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="eyebrow">THE WORLD OF LONG STORIES</div>
+
+  <h1>একটি গল্পের <span>অন্য জীবন</span></h1>
+
+  <p>
+    কিছু গল্প এক দিনে শেষ হয় না। কিছু চরিত্র আমাদের
+    সঙ্গে থেকে যায় বহুদিন। EARENDEL-এর উপন্যাস বিভাগে
+    খুঁজে নাও সেই গল্পগুলো, যাদের শেষ পাতার পরেও
+    অনুভূতিগুলো শেষ হয় না।
+  </p>
+
+  <div class="search-wrap">
+    <input
+      class="search"
+      id="search"
+      type="search"
+      placeholder="উপন্যাস বা লেখকের নাম খুঁজুন..."
+    >
+  </div>
+</section>
+
+<main>
+
+  <div class="section-head">
+    <h2>উপন্যাসের সংগ্রহ</h2>
+    <p id="count">৬টি উপন্যাস</p>
+  </div>
+
+  <div class="filters">
+    <button class="filter active" data-category="all">সব উপন্যাস</button>
+    <button class="filter" data-category="love">প্রেম</button>
+    <button class="filter" data-category="life">জীবন</button>
+    <button class="filter" data-category="sad">বিরহ</button>
+    <button class="filter" data-category="mystery">রহস্য</button>
+  </div>
+
+  <div class="grid" id="novelGrid">
+
+    <article class="book" data-category="love">
+      <div class="book-top">
+        <div class="book-icon">♡</div>
+        <span class="tag">প্রেম</span>
+      </div>
+
+      <h3>শেষ বিকেলের চিঠি</h3>
+      <div class="author">লেখক: EARENDEL</div>
+
+      <p class="description">
+        কিছু চিঠি কখনো পাঠানো হয় না।
+        অথচ সেই না-পাঠানো কথাগুলোই একদিন
+        জীবনের সবচেয়ে বড় গল্প হয়ে ওঠে।
+      </p>
+
+      <div class="book-bottom">
+        <small>প্রেম · অনুভূতি</small>
+        <button class="read-btn" data-book="0">পড়ুন ↗</button>
+      </div>
+    </article>
+
+    <article class="book" data-category="life">
+      <div class="book-top">
+        <div class="book-icon">✦</div>
+        <span class="tag">জীবন</span>
+      </div>
+
+      <h3>অচেনা শহরের মানুষ</h3>
+      <div class="author">লেখক: EARENDEL</div>
+
+      <p class="description">
+        শহরের ভিড়ে হারিয়ে যাওয়া এক মানুষের
+        গল্প। প্রতিদিনের ছোট ছোট ঘটনা তাকে
+        শেখায় জীবনের নতুন অর্থ।
+      </p>
+
+      <div class="book-bottom">
+        <small>জীবন · আত্মঅন্বেষণ</small>
+        <button class="read-btn" data-book="1">পড়ুন ↗</button>
+      </div>
+    </article>
+
+    <article class="book" data-category="sad">
+      <div class="book-top">
+        <div class="book-icon">☾</div>
+        <span class="tag">বিরহ</span>
+      </div>
+
+      <h3>তোমাকে ছাড়া দিনগুলো</h3>
+      <div class="author">লেখক: EARENDEL</div>
+
+      <p class="description">
+        চলে যাওয়ার পরেও কিছু মানুষ
+        আমাদের প্রতিদিনের অভ্যাসে থেকে যায়।
+        এই গল্প সেই শূন্যতার।
+      </p>
+
+      <div class="book-bottom">
+        <small>বিরহ · স্মৃতি</small>
+        <button class="read-btn" data-book="2">পড়ুন ↗</button>
+      </div>
+    </article>
+
+    <article class="book" data-category="mystery">
+      <div class="book-top">
+        <div class="book-icon">⌘</div>
+        <span class="tag">রহস্য</span>
+      </div>
+
+      <h3>নীরব বাড়ির জানালা</h3>
+      <div class="author">লেখক: EARENDEL</div>
+
+      <p class="description">
+        পুরোনো বাড়ির একটি জানালা প্রতি রাতে
+        নিজে থেকেই খুলে যায়। এক তরুণ
+        জানতে চায়, এর পেছনে কী রহস্য।
+      </p>
+
+      <div class="book-bottom">
+        <small>রহস্য · অনুসন্ধান</small>
+        <button class="read-btn" data-book="3">পড়ুন ↗</button>
+      </div>
+    </article>
+
+    <article class="book" data-category="love">
+      <div class="book-top">
+        <div class="book-icon">❀</div>
+        <span class="tag">প্রেম</span>
+      </div>
+
+      <h3>একটু তোমার মতো</h3>
+      <div class="author">লেখক: EARENDEL</div>
+
+      <p class="description">
+        দুজন আলাদা মানুষ, দুটি আলাদা স্বপ্ন।
+        তবুও কোথাও তাদের গল্পের পথ
+        এক হয়ে যায়।
+      </p>
+
+      <div class="book-bottom">
+        <small>প্রেম · সম্পর্ক</small>
+        <button class="read-btn" data-book="4">পড়ুন ↗</button>
+      </div>
+    </article>
+
+    <article class="book" data-category="life">
+      <div class="book-top">
+        <div class="book-icon">☼</div>
+        <span class="tag">জীবন</span>
+      </div>
+
+      <h3>ফিরে আসার পথ</h3>
+      <div class="author">লেখক: EARENDEL</div>
+
+      <p class="description">
+        ভুল পথে অনেক দূর চলে যাওয়ার পর
+        একজন মানুষ খুঁজে পায় নিজের কাছে
+        ফিরে আসার সাহস।
+      </p>
+
+      <div class="book-bottom">
+        <small>জীবন · আশা</small>
+        <button class="read-btn" data-book="5">পড়ুন ↗</button>
+      </div>
+    </article>
+
+  </div>
+
+  <div class="empty" id="empty">
+    কোনো উপন্যাস খুঁজে পাওয়া যায়নি।<br>
+    অন্য নাম বা বিভাগ দিয়ে চেষ্টা করো।
+  </div>
+
+</main>
+
+<footer>
+  <div>© 2026 <span>EARENDEL</span></div>
+  <div>শব্দের ভেতরে, অনুভূতির বাইরে।</div>
+</footer>
+
+<div class="modal" id="modal">
+  <div class="modal-box">
+
+    <div class="modal-head">
+      <div>
+        <h2 id="modalTitle"></h2>
+        <div class="modal-author" id="modalAuthor"></div>
+      </div>
+
+      <button class="close" id="closeModal" aria-label="বন্ধ করুন">×</button>
+    </div>
+
+    <div class="modal-content" id="modalContent"></div>
+
+  </div>
+</div>
+
+<script>
+const novels = [
+  {
+    title: "শেষ বিকেলের চিঠি",
+    author: "EARENDEL",
+    content: `অধ্যায় ১
+শেষ বিকেলের চিঠি
+
+বিকেলটা অন্য দিনের মতোই ছিল।
+আকাশে মেঘ, জানালার পাশে পুরোনো
+একটি টেবিল, আর টেবিলের ওপর
+অযত্নে পড়ে থাকা সাদা কাগজ।
+
+অর্ণব অনেকক্ষণ ধরে কাগজটার দিকে
+তাকিয়ে ছিল।
+
+কিছু কথা মানুষ মুখে বলতে পারে না।
+কিছু কথা লিখেও পাঠাতে পারে না।
+তবুও সেই কথাগুলো কোথাও না কোথাও
+জমে থাকে।
+
+আজ সে লিখবে।
+
+"তোমাকে অনেক দিন কিছু বলা হয়নি।
+তুমি চলে যাওয়ার পর শহরটা বদলায়নি,
+শুধু আমার হাঁটার পথগুলো বদলে গেছে।
+
+আগে যে রাস্তায় তোমার সঙ্গে হাঁটতাম,
+এখন সেখানে একা হাঁটি।
+
+আগে যে বিকেলগুলো খুব ছোট মনে হতো,
+এখন সেগুলো শেষ হতে চায় না।
+
+আমি জানি না তুমি কখনো এই চিঠি পড়বে কি না।
+তবুও লিখছি।
+
+কারণ কিছু অনুভূতি উত্তর পাওয়ার জন্য নয়,
+শুধু একবার নিজের কাছে সত্যি হওয়ার জন্য।"
+
+অর্ণব কলম থামাল।
+
+জানালার বাইরে সন্ধ্যা নামছিল।
+সে চিঠিটা ভাঁজ করল,
+কিন্তু খামে ভরল না।
+
+কিছু চিঠি ঠিকানার জন্য লেখা হয় না।
+কিছু চিঠি শুধু মনে জমে থাকা
+কথাগুলোকে একটু হালকা করে।`
+  },
+  {
+    title: "অচেনা শহরের মানুষ",
+    author: "EARENDEL",
+    content: `অধ্যায় ১
+অচেনা শহর
+
+শহরটা তার কাছে নতুন ছিল।
+রাস্তার নাম মনে থাকত না,
+মানুষের মুখগুলোও দ্রুত বদলে যেত।
+
+প্রতিদিন সকালে সে একই বাসে উঠত।
+একই জানালার পাশে বসে
+একই শহরকে নতুন করে দেখত।
+
+তার মনে হতো,
+মানুষ আসলে শুধু ঠিকানা খোঁজে না।
+মানুষ খোঁজে এমন একটা জায়গা,
+যেখানে তাকে নিজের মতো থাকতে দেওয়া হবে।
+
+একদিন বাস থেকে নামার সময়
+এক বৃদ্ধ লোক তাকে বললেন,
+"বাবা, তুমি কি এই শহরে নতুন?"
+
+সে একটু হেসে বলল,
+"হ্যাঁ, অনেক দিন হলো এসেছি।
+তবুও শহরটা এখনো অচেনা।"
+
+বৃদ্ধ লোকটি বললেন,
+"শহর চেনার আগে মানুষকে চিনতে হয়।
+আর মানুষ চিনতে সময় লাগে।"
+
+সেদিন কথাটা তার মনে রয়ে গেল।
+
+হয়তো নিজের জীবনকেও
+সে এত দিন অচেনা ভেবেছে।
+
+হয়তো পরিচিত হওয়ার শুরুটা
+নিজের সঙ্গে কথা বলা থেকেই।`
+  },
+  {
+    title: "তোমাকে ছাড়া দিনগুলো",
+    author: "EARENDEL",
+    content: `অধ্যায় ১
+শূন্যতার অভ্যাস
+
+মানুষ চলে গেলে ঘরটা সঙ্গে সঙ্গে
+খালি হয়ে যায় না।
+
+প্রথমে শুধু কিছু অভ্যাস বদলে যায়।
+
+সকালে ফোনটা আর আগের মতো
+বারবার দেখা হয় না।
+কোনো গল্প শুনলে মনে হয়,
+এটা তাকে বললে ভালো হতো।
+
+রাতে ঘুমানোর আগে
+একটা নাম মনে আসে।
+
+তারপর ধীরে ধীরে
+সেই নামের পাশে জমে ওঠে
+অনেক না-বলা কথা।
+
+রাহুল জানত,
+সব সম্পর্ক ফিরে আসে না।
+
+তবুও সে প্রতিদিন
+একটু একটু করে শিখছিল
+কীভাবে নিজের দিনগুলো
+নিজের মতো করে বাঁচতে হয়।
+
+একদিন পুরোনো ছবিগুলো
+একটি বাক্সে রেখে দিল।
+
+ছবিগুলো ফেলে দিল না।
+কারণ স্মৃতি মুছে ফেলা
+আর স্মৃতির সঙ্গে শান্তিতে থাকা
+এক জিনিস নয়।
+
+সেদিন সে প্রথম বুঝল,
+কাউকে মিস করা মানেই
+নিজেকে হারিয়ে ফেলা নয়।`
+  },
+  {
+    title: "নীরব বাড়ির জানালা",
+    author: "EARENDEL",
+    content: `অধ্যায় ১
+জানালার ওপাশে
+
+বাড়িটা গ্রামের শেষ প্রান্তে।
+
+অনেক বছর ধরে কেউ সেখানে থাকে না।
+দেয়ালে শ্যাওলা,
+বারান্দায় শুকনো পাতা,
+আর সামনের জানালায়
+একটি পুরোনো পর্দা।
+
+তবুও প্রতি রাতে
+জানালাটা খোলা দেখা যায়।
+
+নীল প্রথম দিন বিষয়টা
+খেয়াল করেনি।
+
+দ্বিতীয় দিনও না।
+
+তৃতীয় দিন সে দাঁড়িয়ে দেখল,
+বাড়ির ভেতরে কোনো আলো নেই।
+কেউ হাঁটছে না।
+কোনো শব্দও নেই।
+
+কিন্তু জানালাটা খোলা।
+
+পরদিন সকালে সে বাড়ির কাছে গেল।
+
+দরজায় তালা ছিল।
+তালার গায়ে ধুলো জমে আছে।
+মনে হলো বহু বছর
+কেউ সেটি ছুঁয়েও দেখেনি।
+
+নীল ফিরে আসার সময়
+একটি ছোট কাগজ দেখতে পেল।
+
+কাগজটিতে লেখা ছিল:
+
+"যদি সত্যিই জানতে চাও,
+তবে রাতের আগে ফিরে এসো।"
+
+নীল কাগজটি পকেটে রাখল।
+
+তারপর প্রথমবারের মতো
+বাড়িটার দিকে তাকিয়ে
+তার মনে হলো,
+এই নীরবতার পেছনে
+কোনো গল্প লুকিয়ে আছে।`
+  },
+  {
+    title: "একটু তোমার মতো",
+    author: "EARENDEL",
+    content: `অধ্যায় ১
+দুটি আলাদা পথ
+
+মায়া বই পড়তে ভালোবাসত।
+অন্যদিকে নীল
+কোনো গল্পের শেষটা
+আগে থেকেই জানতে চাইত।
+
+তাদের প্রথম দেখা হয়েছিল
+একটি ছোট বইয়ের দোকানে।
+
+মায়া বইটি হাতে নিয়ে বলেছিল,
+"শেষটা জানলে গল্প পড়ার মজা থাকে?"
+
+নীল হেসে বলেছিল,
+"শেষটা জানলে অন্তত
+মন খারাপ হবে কি না জানা যায়।"
+
+মায়া বলেছিল,
+"সব গল্পের শেষ জানার দরকার নেই।
+কিছু গল্প চলতে থাকলেই ভালো।"
+
+সেদিন কথাটা
+নীলের খুব একটা ভালো লাগেনি।
+
+কিন্তু পরের কয়েক সপ্তাহে
+সে বুঝতে শুরু করল,
+মায়া শুধু বইয়ের কথা বলছিল না।
+
+জীবনের কিছু মুহূর্ত
+আগে থেকে জানা যায় না।
+
+কিছু মানুষকে
+কোনো পরিকল্পনা ছাড়াই
+জীবনের ভেতরে জায়গা দিতে হয়।
+
+আর কিছু গল্প
+শুরু হওয়ার আগে
+তাদের শেষটা লেখা থাকে না।`
+  },
+  {
+    title: "ফিরে আসার পথ",
+    author: "EARENDEL",
+    content: `অধ্যায় ১
+নিজের কাছে ফেরা
+
+অনেক দিন পর
+সায়েম পুরোনো বাড়িতে ফিরল।
+
+বাড়ির উঠোনে
+একটি ছোট গাছ ছিল।
+গাছটি এখন অনেক বড়।
+
+সে গাছটার পাশে দাঁড়িয়ে
+মনে করার চেষ্টা করল,
+শেষ কবে এখানে এসেছিল।
+
+সময় মানুষকে
+অনেক দূরে নিয়ে যায়।
+
+কখনো স্বপ্নের দিকে,
+কখনো ভুলের দিকে,
+কখনো এমন কোনো পথে
+যেখান থেকে ফিরে আসা
+অসম্ভব মনে হয়।
+
+সায়েম ভেবেছিল,
+ফিরে আসা মানে
+সবকিছু আগের মতো হয়ে যাওয়া।
+
+কিন্তু বাড়ির দরজা খুলে
+সে বুঝল,
+আগের দিনগুলো আর ফিরে আসবে না।
+
+তবুও ঘরটা তার পরিচিত।
+
+দেয়ালের পুরোনো ছবি,
+জানালার পাশে রাখা বই,
+আর উঠোনের গাছটি।
+
+সবকিছু তাকে মনে করিয়ে দিল,
+মানুষ যত দূরেই যাক,
+নিজের কাছে ফিরে আসার
+একটি পথ সব সময় থাকে।
+
+সেই পথ খুঁজে নিতে হয়।
+
+কখনো একা,
+কখনো অন্য কারও হাত ধরে।`
+  }
+];
+
+const cards = document.querySelectorAll(".book");
+const filters = document.querySelectorAll(".filter");
+const search = document.getElementById("search");
+const count = document.getElementById("count");
+const empty = document.getElementById("empty");
+
+let currentCategory = "all";
+
+function updateBooks() {
+  const query = search.value.trim().toLowerCase();
+  let visible = 0;
+
+  cards.forEach(card => {
+    const category = card.dataset.category;
+    const text = card.innerText.toLowerCase();
+
+    const categoryMatch =
+      currentCategory === "all" ||
+      category === currentCategory;
+
+    const searchMatch = text.includes(query);
+
+    const show = categoryMatch && searchMatch;
+
+    card.style.display = show ? "flex" : "none";
+
+    if (show) visible++;
+  });
+
+  count.textContent = visible + "টি উপন্যাস";
+  empty.style.display = visible ? "none" : "block";
+}
+
+filters.forEach(button => {
+  button.addEventListener("click", () => {
+    filters.forEach(item => item.classList.remove("active"));
+
+    button.classList.add("active");
+    currentCategory = button.dataset.category;
+
+    updateBooks();
+  });
+});
+
+search.addEventListener("input", updateBooks);
+
+const modal = document.getElementById("modal");
+const modalTitle = document.getElementById("modalTitle");
+const modalAuthor = document.getElementById("modalAuthor");
+const modalContent = document.getElementById("modalContent");
+const closeModal = document.getElementById("closeModal");
+
+document.querySelectorAll(".read-btn").forEach(button => {
+  button.addEventListener("click", () => {
+    const index = Number(button.dataset.book);
+    const novel = novels[index];
+
+    modalTitle.textContent = novel.title;
+    modalAuthor.textContent = "লেখক: " + novel.author;
+    modalContent.textContent = novel.content;
+
+    modal.classList.add("show");
+    document.body.style.overflow = "hidden";
+  });
+});
+
+function hideModal() {
+  modal.classList.remove("show");
+  document.body.style.overflow = "";
+}
+
+closeModal.addEventListener("click", hideModal);
+
+modal.addEventListener("click", event => {
+  if (event.target === modal) {
+    hideModal();
+  }
+});
+
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape") {
+    hideModal();
+  }
+});
+
+updateBooks();
+</script>
+
+</body>
+</html>
