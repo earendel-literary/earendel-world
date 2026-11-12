@@ -1,6 +1,6 @@
 {
   "appId": "com.earendel.literary",
   "appName": "EARENDEL",
-  "webDir": "app",
+  "webDir": "redesign-demo",
   "bundledWebRuntime": false
 }
