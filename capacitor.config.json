@@ -1,0 +1,6 @@
+{
+  "appId": "com.earendel.literary",
+  "appName": "EARENDEL",
+  "webDir": "app",
+  "bundledWebRuntime": false
+}
