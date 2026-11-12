@@ -1,6 +1,13 @@
 name: Build EARENDEL Android APK
 
 on:
+  push:
+    branches: [earendel-redesign-demo]
+    paths:
+      - "redesign-demo/**"
+      - "package.json"
+      - "capacitor.config.json"
+      - ".github/workflows/build-android.yml"
   workflow_dispatch:
 
 permissions:
