@@ -1,0 +1,16 @@
+{
+  "id": "./",
+  "name": "EARENDEL — Beyond Words",
+  "short_name": "EARENDEL",
+  "description": "A quiet universe for poetry, stories and words.",
+  "lang": "bn",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#090811",
+  "theme_color": "#090811",
+  "icons": [
+    { "src": "./icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
