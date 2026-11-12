@@ -1,0 +1,63 @@
+name: Build approved EARENDEL Android APK
+
+on:
+  push:
+    branches: [earendel-redesign-demo]
+    paths:
+      - "redesign-demo/**"
+      - "capacitor.config.json"
+      - "package.json"
+      - ".github/workflows/build-approved-android.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: earendel-approved-android
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build EARENDEL Android APK
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout approved app branch
+        uses: actions/checkout@v4
+        with:
+          ref: earendel-redesign-demo
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+      - name: Install Capacitor
+        run: npm install --no-audit --no-fund
+      - name: Generate Android project
+        run: npx cap add android
+      - name: Sync approved EARENDEL design
+        run: npx cap sync android
+      - name: Build installable debug APK
+        working-directory: android
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleDebug
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: EARENDEL-Android-APK
+          path: android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+          retention-days: 30
+      - name: Publish APK release asset
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: earendel-android-preview-${{ github.run_number }}
+          name: EARENDEL Android Preview #${{ github.run_number }}
+          prerelease: true
+          generate_release_notes: true
+          files: android/app/build/outputs/apk/debug/app-debug.apk
