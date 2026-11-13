@@ -21,6 +21,7 @@
     <div class="side-label">DISCOVER</div>
     <nav class="side-nav" aria-label="Main navigation">
       <button class="nav-item active" data-view="home"><span class="nav-icon">⌂</span>Overview</button>
+      <button class="nav-item" data-view="music"><span class="nav-icon">♫</span>Music room</button>
       <button class="nav-item" data-view="poetry"><span class="nav-icon">✳</span>Poetry</button>
       <button class="nav-item" data-view="stories"><span class="nav-icon">▤</span>Stories</button>
       <button class="nav-item" data-view="novels"><span class="nav-icon">▣</span>Novels</button>
@@ -88,6 +89,30 @@
 
       <section class="quote-banner reveal"><div class="quote-mark">“</div><p>যে কথাগুলো কাউকে বলা হয়নি,<br>কখনো কখনো তারাই সবচেয়ে বেশি বেঁচে থাকে।</p><span>— A THOUGHT FROM EARENDEL</span><button id="newQuote">A little more inspiration ↗</button></section>
       <footer class="app-footer"><a class="footer-brand" href="./">EARENDEL<span>®</span></a><span>Made for the love of words.</span><span>© 2026 EARENDEL LITERARY</span></footer>
+    </section>
+
+    <section class="view" id="view-music">
+      <div class="collection-header music-header"><div class="eyebrow"><span class="eyebrow-line"></span> THE EARENDEL SOUNDROOM</div><h1>Music for <em>the in-between.</em></h1><p>বাংলা গান, ব্যান্ড, আর নিজের পছন্দের গান—একটি নিরিবিলি জায়গায়।</p></div>
+      <section class="music-feature">
+        <div class="music-feature-copy"><span class="music-kicker">YOUR PERSONAL LISTENING ROOM</span><h2>শব্দের পাশে<br><em>সুরের বসবাস।</em></h2><p>নিজের ফোন বা কম্পিউটার থেকে MP3 / M4A / WAV / OGG ফাইল যোগ করো। গানগুলো এই ডিভাইসেই সংরক্ষিত থাকবে।</p>
+        <label class="music-import"><input id="audioImport" type="file" accept="audio/*,.mp3,.m4a,.wav,.ogg,.flac" multiple><span>＋</span> Add music from this device</label></div>
+        <div class="music-disc"><div class="disc-center">E</div><span class="disc-orbit"></span></div>
+      </section>
+      <section class="music-player" aria-label="Audio player">
+        <div class="player-track"><div class="player-art">♫</div><div class="player-meta"><small>NOW PLAYING</small><strong id="nowPlayingTitle">Choose a song from your library</strong><span id="nowPlayingArtist">Your music stays on this device</span></div></div>
+        <div class="player-controls"><div class="player-buttons"><button id="previousTrack" aria-label="Previous track">↶</button><button id="playPause" class="play-main" aria-label="Play or pause">▶</button><button id="nextTrack" aria-label="Next track">↷</button></div><div class="player-progress"><span id="currentTime">0:00</span><input id="seekBar" type="range" min="0" max="1000" value="0"><span id="duration">0:00</span></div></div>
+        <div class="player-volume"><span>VOL</span><input id="volumeBar" type="range" min="0" max="1" step=".01" value=".8"></div>
+      </section>
+      <section class="content-section artist-section"><div class="section-heading"><div><div class="eyebrow">BANGLADESHI ALTERNATIVE & ROCK</div><h2>Band <em>discoveries.</em></h2></div><span class="section-note">Official listening destinations</span></div>
+        <div class="artist-grid">
+          <a class="artist-card" href="https://www.youtube.com/results?search_query=ASEES+Bangladeshi+band+official" target="_blank" rel="noopener"><span class="artist-number">01</span><span class="artist-symbol">A</span><strong>ASEES</strong><small>Explore songs on YouTube ↗</small></a>
+          <a class="artist-card" href="https://www.youtube.com/results?search_query=Shonar+Bangla+Circus+official+songs" target="_blank" rel="noopener"><span class="artist-number">02</span><span class="artist-symbol">স</span><strong>Shonar Bangla Circus</strong><small>Explore songs on YouTube ↗</small></a>
+          <a class="artist-card" href="https://www.youtube.com/results?search_query=HIGHWAY+Bangladesh+band+official+songs" target="_blank" rel="noopener"><span class="artist-number">03</span><span class="artist-symbol">H</span><strong>HIGHWAY</strong><small>Explore songs on YouTube ↗</small></a>
+          <a class="artist-card" href="https://www.youtube.com/results?search_query=Artcell+official+songs" target="_blank" rel="noopener"><span class="artist-number">04</span><span class="artist-symbol">音</span><strong>Artcell</strong><small>Explore songs on YouTube ↗</small></a>
+        </div>
+      </section>
+      <section class="content-section"><div class="section-heading"><div><div class="eyebrow">ON THIS DEVICE</div><h2>Your <em>library.</em></h2></div><span class="section-note" id="musicCount">0 tracks</span></div><div class="local-track-list" id="localTrackList"><div class="music-empty"><span>♫</span><strong>Your listening room is waiting.</strong><p>Add audio files from your device to build a private music library.</p></div></div></section>
+      <section class="music-note"><span>♪</span><p>গান যোগ করলে সেগুলো তোমার নিজের ডিভাইসেই থাকবে। এখানে কোনো অননুমোদিত MP3 ডাউনলোড বা কপি দেওয়া হচ্ছে না; ব্যান্ডের গান তাদের প্রকাশিত প্ল্যাটফর্ম থেকেই শুনতে পারবে।</p></section>
     </section>
 
     <section class="view" id="view-collection">
